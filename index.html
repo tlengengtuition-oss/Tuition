@@ -468,6 +468,73 @@
       letter-spacing: 0.05em; margin-bottom: 0.8rem;
     }
   </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Enquiry panel
+  function openEnquiry() {
+    document.getElementById('enquiryPanel').classList.add('open');
+    document.getElementById('enquiryOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeEnquiry() {
+    document.getElementById('enquiryPanel').classList.remove('open');
+    document.getElementById('enquiryOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  window.openEnquiry = openEnquiry;
+  window.closeEnquiry = closeEnquiry;
+
+  // Contact toggle (email / whatsapp)
+  window.switchContact = function(btn, showId, hideId) {
+    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    var showEl = document.getElementById(showId);
+    var hideEl = document.getElementById(hideId);
+    showEl.style.display = 'flex';
+    hideEl.style.display = 'none';
+    showEl.querySelector('input').required = true;
+    hideEl.querySelector('input').required = false;
+  };
+
+  // Hide location field when Online is selected
+  var modeEl = document.getElementById('fmode');
+  if (modeEl) {
+    modeEl.addEventListener('change', function() {
+      var loc = document.getElementById('location-field');
+      if (loc) loc.style.display = this.value === 'Online (Zoom)' ? 'none' : 'flex';
+    });
+  }
+
+  // Form submission via Formspree
+  var form = document.getElementById('enquiryForm');
+  if (form) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var btn = form.querySelector('.enquiry-submit');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      try {
+        var res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          document.getElementById('enquirySuccess').classList.add('show');
+        } else {
+          btn.textContent = 'Something went wrong — try again';
+          btn.disabled = false;
+        }
+      } catch(err) {
+        btn.textContent = 'Something went wrong — try again';
+        btn.disabled = false;
+      }
+    });
+  }
+});
+</script>
 </head>
 <body>
 
@@ -1102,46 +1169,5 @@
     <p>Thank you for reaching out. T-Leng will be in touch within 24 hours via email or WhatsApp.</p>
   </div>
 </div>
-
-<script>
-  function switchContact(btn, showId, hideId) {
-    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const showEl = document.getElementById(showId);
-    const hideEl = document.getElementById(hideId);
-    showEl.style.display = 'flex';
-    hideEl.style.display = 'none';
-    // update required attributes
-    showEl.querySelector('input').required = true;
-    hideEl.querySelector('input').required = false;
-  }
-
-  function openEnquiry() {
-    document.getElementById('enquiryPanel').classList.add('open');
-    document.getElementById('enquiryOverlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeEnquiry() {
-    document.getElementById('enquiryPanel').classList.remove('open');
-    document.getElementById('enquiryOverlay').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  document.getElementById('fmode').addEventListener('change', function() {
-    const loc = document.getElementById('location-field');
-    loc.style.display = this.value === 'Online (Zoom)' ? 'none' : 'flex';
-  });
-  document.getElementById('enquiryForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const form = e.target;
-    const btn = form.querySelector('.enquiry-submit');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-    try {
-      const res = await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      });
-      if (res.ok) {
-        form.style.display = 'none';
-        document.getElementById('
+</body>
+</html>
