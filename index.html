@@ -473,7 +473,30 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">T-Leng</a>
+  <a href="#" class="nav-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 160" height="36" style="display:block;">
+      <defs>
+        <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#c9a84c;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#e8d5a3;stop-opacity:1" />
+        </linearGradient>
+      </defs>
+      <rect width="400" height="160" fill="#1a1a2e" rx="4"/>
+      <rect x="0" y="0" width="4" height="160" fill="url(#goldGrad)" rx="2"/>
+      <circle cx="68" cy="80" r="44" fill="none" stroke="url(#goldGrad)" stroke-width="1.5"/>
+      <circle cx="68" cy="80" r="38" fill="none" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+      <text x="44" y="96" font-family="Georgia, serif" font-size="42" font-weight="400" fill="#f5f0e8" letter-spacing="-2">T</text>
+      <line x1="68" y1="68" x2="68" y2="92" stroke="url(#goldGrad)" stroke-width="1.2"/>
+      <text x="71" y="96" font-family="Georgia, serif" font-size="42" font-weight="400" fill="url(#goldGrad)" letter-spacing="0">L</text>
+      <line x1="128" y1="40" x2="128" y2="120" stroke="rgba(201,168,76,0.25)" stroke-width="1"/>
+      <text x="148" y="75" font-family="Georgia, 'Times New Roman', serif" font-size="36" font-weight="400" fill="#f5f0e8" letter-spacing="3">T-LENG</text>
+      <line x1="148" y1="83" x2="340" y2="83" stroke="url(#goldGrad)" stroke-width="1.5"/>
+      <text x="149" y="106" font-family="Arial, sans-serif" font-size="10.5" font-weight="400" fill="rgba(245,240,232,0.55)" letter-spacing="3.5">PRIVATE TUTOR · SINGAPORE</text>
+      <circle cx="354" cy="65" r="2" fill="rgba(201,168,76,0.4)"/>
+      <circle cx="362" cy="65" r="2" fill="rgba(201,168,76,0.25)"/>
+      <circle cx="370" cy="65" r="2" fill="rgba(201,168,76,0.12)"/>
+    </svg>
+  </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#subjects">Subjects</a></li>
@@ -845,7 +868,7 @@
       <div class="contact-card-icon">📧</div>
       <div class="contact-card-label">Email</div>
       <div class="contact-card-value">
-        <a href="mailto:tlengengtuition@gmail.com">tlengengtuition@gmail.com</a>
+        <a href="/cdn-cgi/l/email-protection#9beff7fef5fcfef5fcefeef2eff2f4f5dbfcf6faf2f7b5f8f4f6"><span class="__cf_email__" data-cfemail="9eeaf2fbf0f9fbf0f9eaebf7eaf7f1f0def9f3fff7f2b0fdf1f3">[email&#160;protected]</span></a>
       </div>
     </div>
     <div class="contact-card">
@@ -861,7 +884,7 @@
       <div class="contact-card-value">Singapore</div>
     </div>
   </div>
-  <a href="mailto:tlengengtuition@gmail.com" class="btn-primary" style="display:inline-block;margin-top:1rem;">Send Me an Email</a>
+  <a href="/cdn-cgi/l/email-protection#91e5fdf4fff6f4fff6e5e4f8e5f8feffd1f6fcf0f8fdbff2fefc" class="btn-primary" style="display:inline-block;margin-top:1rem;">Send Me an Email</a>
 </section>
 
 <!-- FOOTER -->
@@ -1080,7 +1103,7 @@
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   function switchContact(btn, showId, hideId) {
     document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
@@ -1121,16 +1144,4 @@
       });
       if (res.ok) {
         form.style.display = 'none';
-        document.getElementById('enquirySuccess').classList.add('show');
-      } else {
-        btn.textContent = 'Something went wrong — try again';
-        btn.disabled = false;
-      }
-    } catch(err) {
-      btn.textContent = 'Something went wrong — try again';
-      btn.disabled = false;
-    }
-  });
-</script>
-</body>
-</html>
+        document.getElementById('
