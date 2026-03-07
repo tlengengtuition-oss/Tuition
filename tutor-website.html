@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>T-Leng — Private Tutor Singapore</title>
+  <meta name="description" content="T-Leng is a dedicated private tutor in Singapore offering Maths, Science and Python tutoring for Primary, Secondary, IB, IP and IGCSE students. In-person and online sessions available." />
+  <meta name="keywords" content="private tutor Singapore, maths tutor, science tutor, python tutor, IB tutor, IGCSE tutor, O-level tutor, primary tutor" />
+  <meta property="og:title" content="T-Leng — Private Tutor Singapore" />
+  <meta property="og:description" content="Patient, personalised tutoring for Primary to JC students. Maths, Science, Python, IB, IP & IGCSE." />
+  <meta property="og:type" content="website" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:     #1a1a2e;
+      --cream:   #f5f0e8;
+      --gold:    #c9a84c;
+      --gold-lt: #e8d5a3;
+      --warm:    #f9f5ed;
+      --muted:   #7a7060;
+      --border:  #ddd5c0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 4rem;
+      background: rgba(245,240,232,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      padding-top: 5rem;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 70% 50%, rgba(201,168,76,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(26,26,46,0.05) 0%, transparent 60%);
+    }
+    .hero-text {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 5rem 4rem 5rem 6rem;
+      position: relative; z-index: 1;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.4rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block;
+      width: 2rem; height: 1px; background: var(--gold);
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5vw, 4.8rem);
+      font-weight: 300; line-height: 1.12;
+      color: var(--ink); margin-bottom: 0.2rem;
+    }
+    .hero h1 em {
+      font-style: italic; color: var(--gold);
+    }
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-weight: 300; font-style: italic;
+      color: var(--muted); margin: 1.2rem 0 2rem;
+      line-height: 1.6;
+    }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.6rem; }
+    .tag {
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 2px; color: var(--muted);
+      background: rgba(255,255,255,0.5);
+    }
+    .hero-cta { display: flex; gap: 1rem; }
+    .btn-primary {
+      padding: 0.9rem 2.2rem;
+      background: var(--ink); color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold); transform: translateY(-1px); }
+    .btn-outline {
+      padding: 0.9rem 2.2rem;
+      background: transparent; color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; border: 1px solid var(--ink); cursor: pointer;
+      transition: all 0.25s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    .hero-image {
+      display: flex; align-items: center; justify-content: center;
+      padding: 5rem 5rem 5rem 2rem;
+      position: relative;
+    }
+    .photo-frame {
+      position: relative; width: 420px; height: 520px;
+    }
+    .photo-frame::before {
+      content: '';
+      position: absolute; top: -16px; right: -16px;
+      width: 100%; height: 100%;
+      border: 2px solid var(--gold-lt); z-index: 0;
+    }
+    .photo-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      position: relative; z-index: 1;
+      overflow: hidden;
+      background: #ffffff;
+    }
+    .photo-placeholder::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, transparent 60%, rgba(245,240,232,0.25) 100%);
+      pointer-events: none; z-index: 2;
+    }
+    .photo-placeholder img {
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      image-rendering: high-quality;
+      -ms-interpolation-mode: bicubic;
+      transform: scaleX(-1);
+      filter: brightness(1.08) contrast(1.1) saturate(0.95) drop-shadow(0 4px 20px rgba(0,0,0,0.12));
+    }
+    .photo-icon {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; margin-bottom: 0.8rem; position: relative; z-index: 1;
+    }
+    .photo-caption {
+      font-size: 0.75rem; color: rgba(255,255,255,0.7);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      position: relative; z-index: 1;
+    }
+    .stat-bubble {
+      position: absolute; background: white;
+      padding: 1rem 1.4rem; box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+    .stat-bubble.left { bottom: 60px; left: -60px; }
+    .stat-bubble.right { top: 80px; right: -50px; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem; font-weight: 600; color: var(--gold);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.65rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); margin-top: 0.2rem;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 6rem; }
+    .section-label {
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 300; line-height: 1.2;
+      color: var(--ink); margin-bottom: 1.6rem;
+    }
+    .divider {
+      width: 3rem; height: 2px;
+      background: var(--gold); margin-bottom: 2rem;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--warm);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+      align-items: center;
+    }
+    .about-text p {
+      font-size: 1rem; line-height: 1.85;
+      color: #3a3628; margin-bottom: 1.2rem;
+    }
+    .quals-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem;
+    }
+    .qual-card {
+      background: white; padding: 1.4rem;
+      border-left: 3px solid var(--gold);
+    }
+    .qual-card-label {
+      font-size: 0.65rem; font-weight: 500;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.3rem;
+    }
+    .qual-card-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem; font-weight: 600; color: var(--ink);
+    }
+
+    /* ── SUBJECTS ── */
+    #subjects { background: var(--ink); }
+    #subjects .section-label { color: var(--gold-lt); }
+    #subjects .section-title { color: var(--cream); }
+    #subjects .divider { background: var(--gold); }
+    .subjects-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .subject-card {
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 2rem 1.8rem;
+      transition: border-color 0.25s, background 0.25s;
+      cursor: default;
+    }
+    .subject-card:hover {
+      border-color: var(--gold);
+      background: rgba(201,168,76,0.06);
+    }
+    .subject-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+    .subject-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 600;
+      color: var(--cream); margin-bottom: 0.4rem;
+    }
+    .subject-levels {
+      font-size: 0.72rem; color: rgba(255,255,255,0.45);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── TIMETABLE ── */
+    #timetable { background: var(--cream); }
+    .timetable-note {
+      font-size: 0.82rem; color: var(--muted);
+      margin-bottom: 2rem; font-style: italic;
+    }
+    .timetable-wrap { overflow-x: auto; }
+    table {
+      width: 100%; border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+    thead th {
+      font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--muted); padding: 0.8rem 1rem;
+      border-bottom: 2px solid var(--border);
+      text-align: left;
+    }
+    tbody td {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--ink);
+    }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover td { background: rgba(201,168,76,0.05); }
+    .time-col { font-weight: 500; white-space: nowrap; }
+    .slot {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.3rem 0.75rem;
+      font-size: 0.72rem; font-weight: 500;
+      border-radius: 2px;
+    }
+    .slot.avail { background: #e8f5e9; color: #2e7d32; }
+    .slot.busy  { background: #fce4ec; color: #c62828; }
+    .slot.dot::before {
+      content: ''; width: 6px; height: 6px;
+      border-radius: 50%; background: currentColor;
+    }
+    .legend {
+      display: flex; gap: 1.5rem; margin-top: 1.2rem;
+    }
+    .legend-item {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.75rem; color: var(--muted);
+    }
+    .legend-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+    }
+    .legend-dot.avail { background: #2e7d32; }
+    .legend-dot.busy  { background: #c62828; }
+
+    /* ── RATES ── */
+    #rates {
+      background: var(--warm);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;
+    }
+    .rates-grid { display: flex; flex-direction: column; gap: 1rem; }
+    .rate-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 1.4rem;
+      background: white;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .rate-row:hover { border-color: var(--gold); }
+    .rate-level { font-weight: 500; }
+    .rate-sub { font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem; }
+    .rate-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 600; color: var(--gold);
+    }
+    .rate-unit { font-size: 0.7rem; color: var(--muted); }
+
+    .info-blocks { display: flex; flex-direction: column; gap: 1.5rem; }
+    .info-block {
+      padding: 1.4rem 1.6rem;
+      background: white; border-left: 3px solid var(--gold-lt);
+    }
+    .info-block-title {
+      font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.5rem;
+    }
+    .info-block p { font-size: 0.88rem; line-height: 1.7; color: var(--muted); }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--ink); text-align: center; }
+    #contact .section-label { color: var(--gold-lt); }
+    #contact .section-title { color: var(--cream); }
+    #contact .divider { margin: 0 auto 2rem; }
+    .contact-sub {
+      font-size: 1rem; color: rgba(255,255,255,0.5);
+      max-width: 480px; margin: 0 auto 3rem;
+      line-height: 1.7;
+    }
+    .contact-grid {
+      display: flex; justify-content: center; gap: 2rem;
+      flex-wrap: wrap; margin-bottom: 3rem;
+    }
+    .contact-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 2rem 2.5rem;
+      min-width: 200px;
+      transition: border-color 0.25s, background 0.25s;
+    }
+    .contact-card:hover {
+      border-color: var(--gold);
+      background: rgba(201,168,76,0.06);
+    }
+    .contact-card-icon { font-size: 1.6rem; margin-bottom: 0.8rem; }
+    .contact-card-label {
+      font-size: 0.65rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.4rem;
+    }
+    .contact-card-value {
+      font-size: 0.95rem; color: rgba(255,255,255,0.8);
+    }
+    .contact-card a {
+      color: inherit; text-decoration: none;
+    }
+    .contact-card a:hover { color: var(--gold-lt); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111120;
+      padding: 1.5rem 6rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    footer p {
+      font-size: 0.72rem; color: rgba(255,255,255,0.3);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-eyebrow { animation: fadeUp 0.7s ease both; }
+    .hero h1      { animation: fadeUp 0.7s 0.15s ease both; }
+    .hero-subtitle{ animation: fadeUp 0.7s 0.25s ease both; }
+    .hero-tags    { animation: fadeUp 0.7s 0.35s ease both; }
+    .hero-cta     { animation: fadeUp 0.7s 0.45s ease both; }
+    .hero-image   { animation: fadeUp 0.9s 0.3s ease both; }
+    /* ── TESTIMONIALS ── */
+    #testimonials { background: var(--cream); }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem; margin-top: 2rem;
+    }
+    .testimonial-card {
+      background: white;
+      padding: 2rem;
+      position: relative;
+      border-bottom: 3px solid transparent;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .testimonial-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-3px);
+    }
+    .testimonial-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem; line-height: 1;
+      color: var(--gold-lt); margin-bottom: 0.5rem;
+      font-weight: 300;
+    }
+    .testimonial-text {
+      font-size: 0.92rem; line-height: 1.8;
+      color: #3a3628; margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+    .testimonial-author {
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .testimonial-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-lt), var(--gold));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 600; color: white;
+      flex-shrink: 0;
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .testimonial-name {
+      font-size: 0.82rem; font-weight: 500; color: var(--ink);
+    }
+    .testimonial-role {
+      font-size: 0.72rem; color: var(--muted); margin-top: 0.15rem;
+    }
+    .testimonial-stars {
+      color: var(--gold); font-size: 0.75rem;
+      letter-spacing: 0.05em; margin-bottom: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">T-Leng</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#subjects">Subjects</a></li>
+    <li><a href="#timetable">Timetable</a></li>
+    <li><a href="#rates">Rates</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Private Tutor · Singapore</p>
+    <h1>
+      Helping students<br>
+      <em>achieve more</em><br>
+      than they thought<br>possible.
+    </h1>
+    <p class="hero-subtitle">
+      Patient, structured, and results-driven tutoring<br>
+      for primary, secondary & JC students.
+    </p>
+    <div class="hero-tags">
+      <span class="tag">Mathematics</span>
+      <span class="tag">Science</span>
+      <span class="tag">Python</span>
+      <span class="tag">IB · IP · IGCSE</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#timetable" class="btn-primary">View Availability</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <div class="photo-frame">
+      <div class="photo-placeholder">
+        <img src="20260307_230940.png" alt="T-Leng" style="width:100%; height:100%; object-fit:cover; object-position: center top; display:block;" />
+      </div>
+    </div>
+    <div class="stat-bubble left">
+      <div class="stat-num">5+</div>
+      <div class="stat-label">Years tutoring</div>
+    </div>
+    <div class="stat-bubble right">
+      <div class="stat-num">95%</div>
+      <div class="stat-label">Grade improvement</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-text">
+    <p class="section-label">About Me</p>
+    <h2 class="section-title">A passion for teaching, a track record of results.</h2>
+    <div class="divider"></div>
+    <p>
+      Hi, I'm <strong>T-Leng</strong> — a kind, patient and dedicated private tutor based in Singapore with over 5 years of experience helping students across all levels reach their academic potential. I graduated from <strong>Singapore Management University</strong> with a Bachelor of Science in Information Systems, and have since worked closely with families across Singapore.
+    </p>
+    <p>
+      I believe in motivating students through engaging lessons and building their self-confidence. My approach focuses on personalised guidance — helping students not only understand the subject matter, but also develop independent learning skills that will serve them well beyond the classroom.
+    </p>
+    <p>
+      Whether you need intensive exam preparation, consistent weekly support, or help building a stronger foundation, I'm here to help every step of the way.
+    </p>
+  </div>
+  <div class="quals-grid">
+    <div class="qual-card">
+      <div class="qual-card-label">Education</div>
+      <div class="qual-card-value">BSc Information Systems<br><small style="font-size:0.8rem;color:var(--muted)">Singapore Management University</small></div>
+    </div>
+    <div class="qual-card">
+      <div class="qual-card-label">Experience</div>
+      <div class="qual-card-value">5+ Years<br><small style="font-size:0.8rem;color:var(--muted)">Private Tutoring</small></div>
+    </div>
+    <div class="qual-card">
+      <div class="qual-card-label">Subjects</div>
+      <div class="qual-card-value">Maths · Science · Python<br><small style="font-size:0.8rem;color:var(--muted)">IB · IP · IGCSE · O-Level</small></div>
+    </div>
+    <div class="qual-card">
+      <div class="qual-card-label">Location</div>
+      <div class="qual-card-value">Singapore<br><small style="font-size:0.8rem;color:var(--muted)">In-person & Online</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- SUBJECTS -->
+<section id="subjects">
+  <p class="section-label">What I Teach</p>
+  <h2 class="section-title" style="color:var(--cream)">Subjects & Levels</h2>
+  <div class="divider"></div>
+  <div class="subjects-grid" style="grid-template-columns: repeat(3, 1fr);">
+    <div class="subject-card">
+      <div class="subject-icon">➕</div>
+      <div class="subject-name">Mathematics</div>
+      <div class="subject-levels">Primary · Lower Sec · O-Level · IB · IP · IGCSE</div>
+    </div>
+    <div class="subject-card">
+      <div class="subject-icon">🔬</div>
+      <div class="subject-name">Science</div>
+      <div class="subject-levels">Primary · Lower Secondary</div>
+    </div>
+    <div class="subject-card">
+      <div class="subject-icon">🐍</div>
+      <div class="subject-name">Python Programming</div>
+      <div class="subject-levels">Primary · Lower Sec · Upper Sec</div>
+    </div>
+    <div class="subject-card">
+      <div class="subject-icon">💬</div>
+      <div class="subject-name">Other Subjects</div>
+      <div class="subject-levels">Contact me to discuss your needs</div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMETABLE -->
+<section id="timetable">
+  <p class="section-label">Availability</p>
+  <h2 class="section-title">Weekly Timetable</h2>
+  <div class="divider"></div>
+  <p class="timetable-note">Updated based on current student schedule. All available slots include at least 1 hour travel buffer. Contact me to book a slot!</p>
+  <div class="timetable-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Monday</th>
+          <th>Tuesday</th>
+          <th>Wednesday</th>
+          <th>Thursday</th>
+          <th>Friday</th>
+          <th>Saturday</th>
+          <th>Sunday</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="time-col">10:00–11:30 AM</td>
+          <td style="color:var(--muted)">—</td>
+          <td style="color:var(--muted)">—</td>
+          <td style="color:var(--muted)">—</td>
+          <td style="color:var(--muted)">—</td>
+          <td style="color:var(--muted)">—</td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+        </tr>
+        <tr>
+          <td class="time-col">12:00–1:30 PM</td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+        </tr>
+        <tr>
+          <td class="time-col">2:00–3:30 PM</td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+        </tr>
+        <tr>
+          <td class="time-col">4:00–5:30 PM</td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+        </tr>
+        <tr>
+          <td class="time-col">6:00–7:30 PM</td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+        </tr>
+        <tr>
+          <td class="time-col">8:00–9:30 PM</td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot avail"></div> Available</div>
+    <div class="legend-item"><div class="legend-dot busy"></div> Taken</div>
+  </div>
+</section>
+
+<!-- RATES -->
+<section id="rates">
+  <div>
+    <p class="section-label">Pricing</p>
+    <h2 class="section-title">Tuition Rates</h2>
+    <div class="divider"></div>
+    <div class="rates-grid">
+      <div class="rate-row">
+        <div>
+          <div class="rate-level">Primary School</div>
+          <div class="rate-sub">P1 – P6 · Maths, Science & Programming</div>
+        </div>
+        <div>
+          <div class="rate-price">$40–50</div>
+          <div class="rate-unit">per hour</div>
+        </div>
+      </div>
+      <div class="rate-row">
+        <div>
+          <div class="rate-level">Lower Secondary</div>
+          <div class="rate-sub">Sec 1 – 2 · Maths, Science & Programming</div>
+        </div>
+        <div>
+          <div class="rate-price">$50–55</div>
+          <div class="rate-unit">per hour</div>
+        </div>
+      </div>
+      <div class="rate-row">
+        <div>
+          <div class="rate-level">Upper Secondary</div>
+          <div class="rate-sub">Sec 3 – 4 · O-Level Mathematics</div>
+        </div>
+        <div>
+          <div class="rate-price">$55–70</div>
+          <div class="rate-unit">per hour</div>
+        </div>
+      </div>
+      <div class="rate-row">
+        <div>
+          <div class="rate-level">IB / IP / IGCSE</div>
+          <div class="rate-sub">International curriculum · Mathematics</div>
+        </div>
+        <div>
+          <div class="rate-price">$60–80</div>
+          <div class="rate-unit">per hour</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-blocks">
+    <div class="info-block">
+      <div class="info-block-title">📍 Location</div>
+      <p>Home tuition available across Singapore. Online sessions via Zoom also available island-wide and internationally.</p>
+    </div>
+    <div class="info-block">
+      <div class="info-block-title">📅 Session Length</div>
+      <p>Typical sessions run 1.5 – 2 hours. Longer sessions available for intensive exam prep.</p>
+    </div>
+    <div class="info-block">
+      <div class="info-block-title">💳 Payment</div>
+      <p>PayNow / Bank Transfer accepted. Invoiced monthly or per session — flexible arrangements.</p>
+    </div>
+    <div class="info-block">
+      <div class="info-block-title">🎯 Trial Lesson</div>
+      <p>First trial lesson available at a discounted rate. No commitment required.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <p class="section-label">What Parents & Students Say</p>
+  <h2 class="section-title">Testimonials</h2>
+  <div class="divider"></div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">T-Leng has been tutoring my son in O-Level Maths for 6 months and the improvement has been remarkable. He went from a D7 to a B3 — we couldn't be happier.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">M</div>
+        <div>
+          <div class="testimonial-name">Mrs. Tan</div>
+          <div class="testimonial-role">Parent · Sec 4 student</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">Very patient and explains concepts really clearly. I used to dread Maths but now I actually look forward to the sessions. My PSLE results improved a lot!</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">J</div>
+        <div>
+          <div class="testimonial-name">Javier L.</div>
+          <div class="testimonial-role">Student · P6 Mathematics</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">T-Leng's Python lessons are structured and practical. My daughter picked up programming faster than I expected — she's now building her own projects at home.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">L</div>
+        <div>
+          <div class="testimonial-name">Mr. Lim</div>
+          <div class="testimonial-role">Parent · Sec 2 Python student</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">Highly recommended for IB Maths. T-Leng really understands the IB curriculum and helped me tackle the internal assessments with confidence.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">A</div>
+        <div>
+          <div class="testimonial-name">Aisha R.</div>
+          <div class="testimonial-role">Student · IB Mathematics</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">We tried a few tutors before T-Leng and he's by far the best. He tracks my child's progress carefully and adjusts his teaching to fill the gaps.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">S</div>
+        <div>
+          <div class="testimonial-name">Mrs. Ng</div>
+          <div class="testimonial-role">Parent · Lower Sec Science</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">Online sessions are just as effective as in-person. T-Leng uses digital whiteboards really well and my son never feels like anything is lost over Zoom.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">R</div>
+        <div>
+          <div class="testimonial-name">Mr. Rajan</div>
+          <div class="testimonial-role">Parent · Online sessions</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Get In Touch</p>
+  <h2 class="section-title">Ready to start?</h2>
+  <div class="divider"></div>
+  <p class="contact-sub">
+    Reach out via any of the channels below. I typically respond within 24 hours.
+  </p>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="contact-card-icon">📧</div>
+      <div class="contact-card-label">Email</div>
+      <div class="contact-card-value">
+        <a href="mailto:tlengengtuition@gmail.com">tlengengtuition@gmail.com</a>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-card-icon">📱</div>
+      <div class="contact-card-label">Phone / WhatsApp</div>
+      <div class="contact-card-value">
+        <a href="tel:+6591866928">+65 9186 6928</a>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-card-icon">📍</div>
+      <div class="contact-card-label">Based In</div>
+      <div class="contact-card-value">Singapore</div>
+    </div>
+  </div>
+  <a href="mailto:tlengengtuition@gmail.com" class="btn-primary" style="display:inline-block;margin-top:1rem;">Send Me an Email</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 T-Leng · Private Tutor Singapore</p>
+  <p>Designed with care ✦</p>
+</footer>
+
+<!-- FLOATING ENQUIRY WIDGET -->
+<style>
+  .enquiry-fab {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+    display: flex; align-items: center; gap: 0.6rem;
+    padding: 0.9rem 1.5rem;
+    background: var(--gold); color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    border: none; cursor: pointer;
+    box-shadow: 0 6px 24px rgba(201,168,76,0.45);
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  }
+  .enquiry-fab:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(201,168,76,0.55); background: #b8932e; }
+  .enquiry-fab-icon { font-size: 1.1rem; }
+  .enquiry-overlay {
+    position: fixed; inset: 0; z-index: 1000;
+    background: rgba(26,26,46,0.5); backdrop-filter: blur(4px);
+    opacity: 0; pointer-events: none; transition: opacity 0.3s;
+  }
+  .enquiry-overlay.open { opacity: 1; pointer-events: all; }
+  .enquiry-panel {
+    position: fixed; top: 0; right: 0; bottom: 0; z-index: 1001;
+    width: 420px; max-width: 100vw;
+    background: var(--warm);
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    display: flex; flex-direction: column;
+    box-shadow: -8px 0 40px rgba(0,0,0,0.15);
+    overflow-y: auto;
+  }
+  .enquiry-panel.open { transform: translateX(0); }
+  .enquiry-panel-header {
+    padding: 2rem 2rem 1.2rem;
+    border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: flex-start;
+    background: var(--ink); color: var(--cream); flex-shrink: 0;
+  }
+  .enquiry-panel-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; line-height: 1.2; }
+  .enquiry-panel-subtitle { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 0.3rem; letter-spacing: 0.04em; }
+  .enquiry-close { background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.5); font-size: 1.4rem; line-height: 1; padding: 0.2rem; transition: color 0.2s; }
+  .enquiry-close:hover { color: var(--gold); }
+  .enquiry-form { padding: 1.8rem 2rem 2rem; display: flex; flex-direction: column; gap: 1.2rem; flex: 1; }
+  .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+  .form-group label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .form-group input, .form-group select, .form-group textarea {
+    padding: 0.75rem 1rem; border: 1px solid var(--border); background: white;
+    font-family: 'DM Sans', sans-serif; font-size: 0.88rem; color: var(--ink);
+    outline: none; transition: border-color 0.2s; appearance: none; -webkit-appearance: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
+  .form-group textarea { resize: vertical; min-height: 80px; }
+  .form-group select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a7060' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .checkbox-group { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.2rem; }
+  .checkbox-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--ink); cursor: pointer; }
+  .checkbox-item input[type="checkbox"] { width: 16px; height: 16px; padding: 0; accent-color: var(--gold); cursor: pointer; flex-shrink: 0; }
+  .form-divider { height: 1px; background: var(--border); margin: 0.2rem 0; }
+  .enquiry-submit {
+    width: 100%; padding: 1rem; background: var(--ink); color: var(--cream);
+    font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase; border: none; cursor: pointer;
+    transition: background 0.25s; margin-top: 0.4rem;
+  }
+  .enquiry-submit:hover { background: var(--gold); color: var(--ink); }
+  .enquiry-success { display: none; flex-direction: column; align-items: center; justify-content: center; padding: 3rem 2rem; text-align: center; flex: 1; }
+  .enquiry-success.show { display: flex; }
+  .enquiry-success-icon { font-size: 3rem; margin-bottom: 1rem; }
+  .enquiry-success h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; color: var(--ink); margin-bottom: 0.6rem; }
+  .enquiry-success p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+  .contact-toggle { display: flex; gap: 0.5rem; }
+  .toggle-btn {
+    flex: 1; padding: 0.6rem 1rem;
+    font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 500;
+    border: 1px solid var(--border); background: white; color: var(--muted);
+    cursor: pointer; transition: all 0.2s; letter-spacing: 0.04em;
+  }
+  .toggle-btn.active { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+  .toggle-btn:hover:not(.active) { border-color: var(--gold); color: var(--gold); }
+</style>
+
+<button class="enquiry-fab" onclick="openEnquiry()">
+  <span class="enquiry-fab-icon">&#x2709;&#xFE0F;</span> Enquire Now
+</button>
+
+<div class="enquiry-overlay" id="enquiryOverlay" onclick="closeEnquiry()"></div>
+
+<div class="enquiry-panel" id="enquiryPanel">
+  <div class="enquiry-panel-header">
+    <div>
+      <div class="enquiry-panel-title">Book a Session</div>
+      <div class="enquiry-panel-subtitle">I'll get back to you within 24 hours</div>
+    </div>
+    <button class="enquiry-close" onclick="closeEnquiry()">&#x2715;</button>
+  </div>
+
+  <form class="enquiry-form" id="enquiryForm" action="https://formspree.io/f/xkoqgwkk" method="POST">
+
+    <!-- Name -->
+    <div class="form-group">
+      <label for="fname">Your Name *</label>
+      <input type="text" id="fname" name="name" placeholder="e.g. Sarah Tan" required />
+    </div>
+
+    <!-- Preferred contact -->
+    <div class="form-group">
+      <label>Preferred Contact Method *</label>
+      <div class="contact-toggle">
+        <button type="button" class="toggle-btn active" data-target="email-field" onclick="switchContact(this, 'email-field', 'phone-field')">📧 Email</button>
+        <button type="button" class="toggle-btn" data-target="phone-field" onclick="switchContact(this, 'phone-field', 'email-field')">📱 WhatsApp</button>
+      </div>
+    </div>
+    <div class="form-group" id="email-field">
+      <label for="femail">Email Address *</label>
+      <input type="email" id="femail" name="email" placeholder="you@example.com" required />
+    </div>
+    <div class="form-group" id="phone-field" style="display:none;">
+      <label for="fphone">WhatsApp Number *</label>
+      <input type="tel" id="fphone" name="whatsapp" placeholder="+65 9XXX XXXX" />
+    </div>
+
+    <div class="form-divider"></div>
+
+    <!-- Subject & Level -->
+    <div class="form-group">
+      <label>Subject(s) Needed *</label>
+      <div class="checkbox-group">
+        <label class="checkbox-item"><input type="checkbox" name="subject" value="Mathematics" /> Mathematics</label>
+        <label class="checkbox-item"><input type="checkbox" name="subject" value="Science" /> Science</label>
+        <label class="checkbox-item"><input type="checkbox" name="subject" value="Python Programming" /> Python</label>
+        <label class="checkbox-item"><input type="checkbox" name="subject" value="Other" /> Other</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="flevel">Student Level *</label>
+      <select id="flevel" name="level" required>
+        <option value="" disabled selected>Select level</option>
+        <option>Primary School (P1–P6)</option>
+        <option>Lower Secondary (Sec 1–2)</option>
+        <option>Upper Secondary (Sec 3–4)</option>
+        <option>IB / IP / IGCSE</option>
+      </select>
+    </div>
+
+    <div class="form-divider"></div>
+
+    <!-- Session mode & location -->
+    <div class="form-group">
+      <label for="fmode">Session Mode *</label>
+      <select id="fmode" name="mode" required>
+        <option value="" disabled selected>Select mode</option>
+        <option>In-person</option>
+        <option>Online (Zoom)</option>
+        <option>Either is fine</option>
+      </select>
+    </div>
+    <div class="form-group" id="location-field">
+      <label for="flocation">Your Location / Area</label>
+      <input type="text" id="flocation" name="location" placeholder="e.g. Ang Mo Kio, Tampines..." />
+    </div>
+
+    <div class="form-divider"></div>
+
+    <!-- Availability -->
+    <div class="form-group">
+      <label>Preferred Days *</label>
+      <div class="checkbox-group" style="grid-template-columns: repeat(4, 1fr);">
+        <label class="checkbox-item"><input type="checkbox" name="day" value="Mon" /> Mon</label>
+        <label class="checkbox-item"><input type="checkbox" name="day" value="Tue" /> Tue</label>
+        <label class="checkbox-item"><input type="checkbox" name="day" value="Wed" /> Wed</label>
+        <label class="checkbox-item"><input type="checkbox" name="day" value="Thu" /> Thu</label>
+        <label class="checkbox-item"><input type="checkbox" name="day" value="Fri" /> Fri</label>
+        <label class="checkbox-item"><input type="checkbox" name="day" value="Sat" /> Sat</label>
+        <label class="checkbox-item"><input type="checkbox" name="day" value="Sun" /> Sun</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="ftime">Preferred Time Slot *</label>
+      <select id="ftime" name="time_slot" required>
+        <option value="" disabled selected>Select time</option>
+        <option>Morning (9am – 12pm)</option>
+        <option>Afternoon (12pm – 4pm)</option>
+        <option>Evening (4pm – 7pm)</option>
+        <option>Night (7pm – 9pm)</option>
+        <option>Flexible</option>
+      </select>
+    </div>
+
+    <div class="form-divider"></div>
+
+    <!-- Notes -->
+    <div class="form-group">
+      <label for="fnotes">Anything else I should know?</label>
+      <textarea id="fnotes" name="notes" placeholder="e.g. upcoming exams, weak topics, special needs..."></textarea>
+    </div>
+
+    <button type="submit" class="enquiry-submit">Submit Enquiry →</button>
+  </form>
+
+  <div class="enquiry-success" id="enquirySuccess">
+    <div class="enquiry-success-icon">&#x2705;</div>
+    <h3>Enquiry Received!</h3>
+    <p>Thank you for reaching out. T-Leng will be in touch within 24 hours via email or WhatsApp.</p>
+  </div>
+</div>
+
+<script>
+  function switchContact(btn, showId, hideId) {
+    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const showEl = document.getElementById(showId);
+    const hideEl = document.getElementById(hideId);
+    showEl.style.display = 'flex';
+    hideEl.style.display = 'none';
+    // update required attributes
+    showEl.querySelector('input').required = true;
+    hideEl.querySelector('input').required = false;
+  }
+
+  function openEnquiry() {
+    document.getElementById('enquiryPanel').classList.add('open');
+    document.getElementById('enquiryOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeEnquiry() {
+    document.getElementById('enquiryPanel').classList.remove('open');
+    document.getElementById('enquiryOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('fmode').addEventListener('change', function() {
+    const loc = document.getElementById('location-field');
+    loc.style.display = this.value === 'Online (Zoom)' ? 'none' : 'flex';
+  });
+  document.getElementById('enquiryForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('.enquiry-submit');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('enquirySuccess').classList.add('show');
+      } else {
+        btn.textContent = 'Something went wrong — try again';
+        btn.disabled = false;
+      }
+    } catch(err) {
+      btn.textContent = 'Something went wrong — try again';
+      btn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>
