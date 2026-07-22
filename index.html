@@ -690,7 +690,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <p class="timetable-note">Updated based on current student schedule. All available slots include at least 1 hour travel buffer. Contact me to book a slot!</p>
   <div class="timetable-wrap">
     <table>
-      <thead>
+            <thead>
         <tr>
           <th>Time</th>
           <th>Monday</th>
@@ -704,7 +704,27 @@ document.addEventListener('DOMContentLoaded', function() {
       </thead>
       <tbody>
         <tr>
-          <td class="time-col">9:00 AM – 12:00 PM</td>
+          <td class="time-col">9:00 AM</td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+        </tr>
+        <tr>
+          <td class="time-col">10:00 AM</td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+        </tr>
+        <tr>
+          <td class="time-col">11:00 AM</td>
           <td><span class="slot avail dot">Available</span></td>
           <td><span class="slot avail dot">Available</span></td>
           <td><span class="slot avail dot">Available</span></td>
@@ -714,7 +734,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <td><span class="slot busy dot">Taken</span></td>
         </tr>
         <tr>
-          <td class="time-col">12:00 PM – 3:00 PM</td>
+          <td class="time-col">12:00 PM</td>
           <td><span class="slot avail dot">Available</span></td>
           <td><span class="slot avail dot">Available</span></td>
           <td><span class="slot avail dot">Available</span></td>
@@ -724,33 +744,83 @@ document.addEventListener('DOMContentLoaded', function() {
           <td><span class="slot busy dot">Taken</span></td>
         </tr>
         <tr>
-          <td class="time-col">3:00 PM – 5:00 PM</td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
+          <td class="time-col">1:00 PM</td>
           <td><span class="slot avail dot">Available</span></td>
           <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
           <td><span class="slot busy dot">Taken</span></td>
           <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot partial dot">From 4pm</span></td>
         </tr>
         <tr>
-          <td class="time-col">5:00 PM – 7:30 PM</td>
+          <td class="time-col">2:00 PM</td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
           <td><span class="slot busy dot">Taken</span></td>
           <td><span class="slot avail dot">Available</span></td>
           <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot partial dot">Until 7pm</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+        </tr>
+        <tr>
+          <td class="time-col">3:00 PM</td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot partial dot">Until 3:30</span></td>
           <td><span class="slot busy dot">Taken</span></td>
           <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+        </tr>
+        <tr>
+          <td class="time-col">4:00 PM</td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+        </tr>
+        <tr>
+          <td class="time-col">5:00 PM</td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+        </tr>
+        <tr>
+          <td class="time-col">6:00 PM</td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+        </tr>
+        <tr>
+          <td class="time-col">7:00 PM</td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot avail dot">Available</span></td>
           <td><span class="slot avail dot">Available</span></td>
         </tr>
         <tr>
-          <td class="time-col">7:30 PM – 9:30 PM</td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot partial dot">From 8pm</span></td>
-          <td><span class="slot partial dot">Until 9pm</span></td>
-          <td><span class="slot avail dot">Available</span></td>
+          <td class="time-col">8:00 PM</td>
+          <td><span class="slot busy dot">Taken</span></td>
           <td><span class="slot avail dot">Available</span></td>
           <td><span class="slot busy dot">Taken</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
+          <td><span class="slot avail dot">Available</span></td>
           <td><span class="slot avail dot">Available</span></td>
         </tr>
       </tbody>
@@ -776,7 +846,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="rate-sub">P1 – P6 · Maths, Science & Programming</div>
         </div>
         <div>
-          <div class="rate-price">$40–50</div>
+          <div class="rate-price">$55–65</div>
           <div class="rate-unit">per hour</div>
         </div>
       </div>
@@ -786,7 +856,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="rate-sub">Sec 1 – 2 · Maths, Science & Programming</div>
         </div>
         <div>
-          <div class="rate-price">$50–55</div>
+          <div class="rate-price">$60–70</div>
           <div class="rate-unit">per hour</div>
         </div>
       </div>
@@ -796,7 +866,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="rate-sub">Sec 3 – 4 · O-Level Mathematics</div>
         </div>
         <div>
-          <div class="rate-price">$55–70</div>
+          <div class="rate-price">$60–70</div>
           <div class="rate-unit">per hour</div>
         </div>
       </div>
@@ -806,7 +876,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="rate-sub">International & Junior College · Mathematics</div>
         </div>
         <div>
-          <div class="rate-price">$60–80</div>
+          <div class="rate-price">$80–90</div>
           <div class="rate-unit">per hour</div>
         </div>
       </div>
