@@ -278,38 +278,119 @@
       font-size: 0.82rem; color: var(--muted);
       margin-bottom: 2rem; font-style: italic;
     }
-    .timetable-wrap { overflow-x: auto; }
-    table {
-      width: 100%; border-collapse: collapse;
+    .timetable-wrap {
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+    .schedule-board {
+      min-width: 1280px;
+      display: grid;
+      grid-template-columns: 82px repeat(7, minmax(150px, 1fr));
+      border: 1px solid #c8b786;
+      background: #fbf9f2;
+      box-shadow: 0 14px 40px rgba(24, 31, 46, 0.10);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .corner-cell,
+    .schedule-header,
+    .time-column,
+    .day-column {
+      border-right: 1px solid #d9ccb0;
+    }
+    .corner-cell {
+      background: linear-gradient(180deg, #fbf8ef 0%, #f2ecd8 100%);
+      min-height: 62px;
+    }
+    .schedule-header {
+      background: linear-gradient(180deg, #f7f1df 0%, #eadfb5 100%);
+      text-align: center;
+      padding: 0.8rem 0.5rem;
+      min-height: 62px;
+      font-weight: 800;
+      color: #1c2436;
+      border-bottom: 1px solid #d6c796;
+      letter-spacing: 0.03em;
+    }
+    .schedule-header span {
+      display: block;
+      font-size: 1.45rem;
+      line-height: 1.1;
+      margin-top: 0.2rem;
+      font-weight: 900;
+      color: #20314f;
+    }
+    .time-column {
+      background: linear-gradient(180deg, #fbf8ef 0%, #f2ecd8 100%);
+      border-bottom: 1px solid #d9ccb0;
+    }
+    .time-label {
+      height: 64px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 0.35rem;
+      font-size: 0.66rem;
+      color: #5c5646;
+      border-bottom: 1px solid #e2d8b8;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .day-column {
+      position: relative;
+      min-height: 768px;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        transparent 0 63px,
+        rgba(134, 113, 55, 0.16) 63px 64px
+      );
+      background-color: #faf8f0;
+    }
+    .day-column:last-child {
+      border-right: none;
+    }
+    .schedule-event {
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      background: linear-gradient(180deg, #f8f0d5 0%, #ecdca7 100%);
+      border: 1px solid #b99841;
+      border-radius: 6px;
+      padding: 0.2rem 0.34rem;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.85), 0 2px 6px rgba(111, 88, 27, 0.12);
+    }
+    .schedule-event::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #b99841, #e7d39a);
+      border-radius: 6px 6px 0 0;
+    }
+    .schedule-event .event-time {
+      display: block;
+      font-size: 0.5rem;
+      color: #4b3c10;
+      font-weight: 800;
+      margin-bottom: 0.03rem;
+      letter-spacing: 0.02em;
+    }
+    .schedule-event .event-text {
+      display: block;
+      font-size: 0.56rem;
+      color: #5f4d1d;
+      font-weight: 700;
+    }
+      font-size: 0.78rem;
+      margin-bottom: 0.7rem;
+    }
+    .schedule-card-price {
+      color: #0e2b5d;
       font-size: 0.82rem;
-    }
-    thead th {
-      font-size: 0.68rem; font-weight: 500;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--muted); padding: 0.8rem 1rem;
-      border-bottom: 2px solid var(--border);
-      text-align: left;
-    }
-    tbody td {
-      padding: 0.9rem 1rem;
-      border-bottom: 1px solid var(--border);
-      color: var(--ink);
-    }
-    tbody tr:last-child td { border-bottom: none; }
-    tbody tr:hover td { background: rgba(201,168,76,0.05); }
-    .time-col { font-weight: 500; white-space: nowrap; }
-    .slot {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      padding: 0.3rem 0.75rem;
-      font-size: 0.72rem; font-weight: 500;
-      border-radius: 2px;
-    }
-    .slot.avail { background: #e8f5e9; color: #2e7d32; }
-    .slot.busy  { background: #fce4ec; color: #c62828; }
-    .slot.partial { background: #fff8e1; color: #f57f17; }
-    .slot.dot::before {
-      content: ''; width: 6px; height: 6px;
-      border-radius: 50%; background: currentColor;
+      font-weight: 700;
     }
     .legend {
       display: flex; gap: 1.5rem; margin-top: 1.2rem;
@@ -687,149 +768,70 @@ document.addEventListener('DOMContentLoaded', function() {
   <p class="section-label">Availability</p>
   <h2 class="section-title">Weekly Timetable</h2>
   <div class="divider"></div>
-  <p class="timetable-note">Updated based on current student schedule. All available slots include at least 1 hour travel buffer. Contact me to book a slot!</p>
+  <p class="timetable-note">Updated based on your latest confirmed teaching schedule for the week. Contact me to book a slot!</p>
   <div class="timetable-wrap">
-    <table>
-            <thead>
-        <tr>
-          <th>Time</th>
-          <th>Monday</th>
-          <th>Tuesday</th>
-          <th>Wednesday</th>
-          <th>Thursday</th>
-          <th>Friday</th>
-          <th>Saturday</th>
-          <th>Sunday</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="time-col">9:00 AM</td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-        </tr>
-        <tr>
-          <td class="time-col">10:00 AM</td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-        </tr>
-        <tr>
-          <td class="time-col">11:00 AM</td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-        </tr>
-        <tr>
-          <td class="time-col">12:00 PM</td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-        </tr>
-        <tr>
-          <td class="time-col">1:00 PM</td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-        </tr>
-        <tr>
-          <td class="time-col">2:00 PM</td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-        </tr>
-        <tr>
-          <td class="time-col">3:00 PM</td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot partial dot">Until 3:30</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-        </tr>
-        <tr>
-          <td class="time-col">4:00 PM</td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-        </tr>
-        <tr>
-          <td class="time-col">5:00 PM</td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-        </tr>
-        <tr>
-          <td class="time-col">6:00 PM</td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-        </tr>
-        <tr>
-          <td class="time-col">7:00 PM</td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-        </tr>
-        <tr>
-          <td class="time-col">8:00 PM</td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot busy dot">Taken</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-          <td><span class="slot avail dot">Available</span></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="schedule-board">
+      <div class="corner-cell"></div>
+      <div class="schedule-header">Mon</div>
+      <div class="schedule-header">Tue</div>
+      <div class="schedule-header">Wed</div>
+      <div class="schedule-header">Thu</div>
+      <div class="schedule-header">Fri</div>
+      <div class="schedule-header">Sat</div>
+      <div class="schedule-header">Sun</div>
+
+      <div class="time-column">
+        <div class="time-label">10 AM</div>
+        <div class="time-label">11 AM</div>
+        <div class="time-label">12 PM</div>
+        <div class="time-label">1 PM</div>
+        <div class="time-label">2 PM</div>
+        <div class="time-label">3 PM</div>
+        <div class="time-label">4 PM</div>
+        <div class="time-label">5 PM</div>
+        <div class="time-label">6 PM</div>
+        <div class="time-label">7 PM</div>
+        <div class="time-label">8 PM</div>
+        <div class="time-label">9 PM</div>
+      </div>
+
+      <div class="day-column">
+        <div class="schedule-event" style="top: 384px; height: 96px;"><span class="event-time">16:00–17:30</span></div>
+        <div class="schedule-event" style="top: 512px; height: 96px;"><span class="event-time">18:00–19:30</span></div>
+        <div class="schedule-event" style="top: 640px; height: 96px;"><span class="event-time">20:00–21:30</span></div>
+      </div>
+      <div class="day-column">
+        <div class="schedule-event" style="top: 512px; height: 64px;"><span class="event-time">18:00–19:00</span></div>
+        <div class="schedule-event" style="top: 576px; height: 64px;"><span class="event-time">19:00–20:00</span></div>
+      </div>
+      <div class="day-column">
+        <div class="schedule-event" style="top: 448px; height: 96px;"><span class="event-time">17:00–18:30</span></div>
+        <div class="schedule-event" style="top: 608px; height: 96px;"><span class="event-time">19:30–21:00</span></div>
+      </div>
+      <div class="day-column">
+        <div class="schedule-event" style="top: 288px; height: 96px;"><span class="event-time">14:30–16:00</span></div>
+        <div class="schedule-event" style="top: 448px; height: 128px;"><span class="event-time">17:00–19:00</span></div>
+        <div class="schedule-event" style="top: 608px; height: 64px;"><span class="event-time">19:30–20:30</span></div>
+      </div>
+      <div class="day-column">
+        <div class="schedule-event" style="top: 320px; height: 128px;"><span class="event-time">15:00–17:00</span></div>
+        <div class="schedule-event" style="top: 512px; height: 96px;"><span class="event-time">18:00–19:30</span></div>
+      </div>
+      <div class="day-column">
+        <div class="schedule-event" style="top: 64px; height: 96px;"><span class="event-time">11:00–12:30</span></div>
+        <div class="schedule-event" style="top: 256px; height: 96px;"><span class="event-time">14:00–15:30</span></div>
+        <div class="schedule-event" style="top: 416px; height: 96px;"><span class="event-time">16:30–18:00</span></div>
+      </div>
+      <div class="day-column">
+        <div class="schedule-event" style="top: 0px; height: 128px;"><span class="event-time">10:00–12:00</span></div>
+        <div class="schedule-event" style="top: 256px; height: 96px;"><span class="event-time">14:00–15:30</span></div>
+        <div class="schedule-event" style="top: 448px; height: 96px;"><span class="event-time">17:00–18:30</span></div>
+      </div>
+    </div>
   </div>
   <div class="legend">
-    <div class="legend-item"><div class="legend-dot avail"></div> Available</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#f57f17"></div> Partially available</div>
-    <div class="legend-item"><div class="legend-dot busy"></div> Taken</div>
+    <div class="legend-item"><div class="legend-dot avail"></div> Confirmed</div>
+    <div class="legend-item"><div class="legend-dot busy"></div> Booked</div>
   </div>
 </section>
 
