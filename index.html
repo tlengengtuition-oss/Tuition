@@ -1064,15 +1064,16 @@ document.addEventListener('DOMContentLoaded', function() {
   .enquiry-close:hover { color: var(--gold); }
   .enquiry-form { padding: 1.8rem 2rem 2rem; display: flex; flex-direction: column; gap: 1.2rem; flex: 1; }
   .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
-  .form-group label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
-  .form-group input, .form-group select, .form-group textarea {
+  .form-group > label,
+  .form-group > .field-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .form-group > input, .form-group > select, .form-group > textarea {
     padding: 0.75rem 1rem; border: 1px solid var(--border); background: white;
     font-family: 'DM Sans', sans-serif; font-size: 0.88rem; color: var(--ink);
     outline: none; transition: border-color 0.2s; appearance: none; -webkit-appearance: none;
   }
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
-  .form-group textarea { resize: vertical; min-height: 80px; }
-  .form-group select {
+  .form-group > input:focus, .form-group > select:focus, .form-group > textarea:focus { border-color: var(--gold); }
+  .form-group > textarea { resize: vertical; min-height: 80px; }
+  .form-group > select {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a7060' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem;
   }
@@ -1129,7 +1130,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <!-- Preferred contact -->
     <div class="form-group">
-      <label>Preferred Contact Method *</label>
+      <span class="field-label">Preferred Contact Method *</span>
       <div class="contact-toggle">
         <button type="button" class="toggle-btn active" data-target="email-field" onclick="switchContact(this, 'email-field', 'phone-field')">📧 Email</button>
         <button type="button" class="toggle-btn" data-target="phone-field" onclick="switchContact(this, 'phone-field', 'email-field')">📱 WhatsApp</button>
@@ -1148,7 +1149,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <!-- Subject & Level -->
     <div class="form-group">
-      <label>Subject(s) Needed *</label>
+      <span class="field-label">Subject(s) Needed *</span>
       <div class="checkbox-group">
         <label class="checkbox-item"><input type="checkbox" name="subject" value="Mathematics" /> Mathematics</label>
         <label class="checkbox-item"><input type="checkbox" name="subject" value="Science" /> Science</label>
@@ -1188,7 +1189,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <!-- Availability -->
     <div class="form-group">
-      <label>Preferred Days *</label>
+      <span class="field-label">Preferred Days *</span>
       <div class="checkbox-group" style="grid-template-columns: repeat(4, 1fr);">
         <label class="checkbox-item"><input type="checkbox" name="day" value="Mon" /> Mon</label>
         <label class="checkbox-item"><input type="checkbox" name="day" value="Tue" /> Tue</label>
