@@ -161,10 +161,7 @@
       pointer-events: none; z-index: 2;
     }
     .photo-placeholder img {
-      image-rendering: -webkit-optimize-contrast;
-      image-rendering: crisp-edges;
-      image-rendering: high-quality;
-      -ms-interpolation-mode: bicubic;
+      image-rendering: auto;
       transform: scaleX(-1);
       filter: brightness(1.08) contrast(1.1) saturate(0.95) drop-shadow(0 4px 20px rgba(0,0,0,0.12));
     }
@@ -382,14 +379,6 @@
       display: block;
       font-size: 0.56rem;
       color: #83352c;
-      font-weight: 700;
-    }
-      font-size: 0.78rem;
-      margin-bottom: 0.7rem;
-    }
-    .schedule-card-price {
-      color: #0e2b5d;
-      font-size: 0.82rem;
       font-weight: 700;
     }
     .legend {
