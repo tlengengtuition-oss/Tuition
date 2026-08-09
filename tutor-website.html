@@ -354,11 +354,11 @@
       position: absolute;
       left: 10px;
       right: 10px;
-      background: linear-gradient(180deg, #f8f0d5 0%, #ecdca7 100%);
-      border: 1px solid #b99841;
+      background: linear-gradient(180deg, #fbe3e0 0%, #f0b8b2 100%);
+      border: 1px solid #b8443a;
       border-radius: 6px;
       padding: 0.2rem 0.34rem;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.85), 0 2px 6px rgba(111, 88, 27, 0.12);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.75), 0 2px 6px rgba(120, 30, 22, 0.14);
     }
     .schedule-event::before {
       content: "";
@@ -367,13 +367,13 @@
       left: 0;
       right: 0;
       height: 2px;
-      background: linear-gradient(90deg, #b99841, #e7d39a);
+      background: linear-gradient(90deg, #b8443a, #e8a79f);
       border-radius: 6px 6px 0 0;
     }
     .schedule-event .event-time {
       display: block;
       font-size: 0.5rem;
-      color: #4b3c10;
+      color: #6d1c14;
       font-weight: 800;
       margin-bottom: 0.03rem;
       letter-spacing: 0.02em;
@@ -381,7 +381,7 @@
     .schedule-event .event-text {
       display: block;
       font-size: 0.56rem;
-      color: #5f4d1d;
+      color: #83352c;
       font-weight: 700;
     }
       font-size: 0.78rem;
@@ -393,17 +393,23 @@
       font-weight: 700;
     }
     .legend {
-      display: flex; gap: 1.5rem; margin-top: 1.2rem;
+      display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1.2rem;
     }
     .legend-item {
       display: flex; align-items: center; gap: 0.5rem;
       font-size: 0.75rem; color: var(--muted);
     }
-    .legend-dot {
-      width: 10px; height: 10px; border-radius: 50%;
+    .legend-swatch {
+      width: 22px; height: 14px; border-radius: 4px; flex-shrink: 0;
     }
-    .legend-dot.avail { background: #2e7d32; }
-    .legend-dot.busy  { background: #c62828; }
+    .legend-swatch.avail {
+      background: #faf8f0;
+      border: 1px solid #d9ccb0;
+    }
+    .legend-swatch.busy {
+      background: linear-gradient(180deg, #fbe3e0 0%, #f0b8b2 100%);
+      border: 1px solid #b8443a;
+    }
 
     /* ── RATES ── */
     #rates {
@@ -830,8 +836,8 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
   <div class="legend">
-    <div class="legend-item"><div class="legend-dot avail"></div> Confirmed</div>
-    <div class="legend-item"><div class="legend-dot busy"></div> Booked</div>
+    <div class="legend-item"><div class="legend-swatch busy"></div> Unavailable &mdash; already booked</div>
+    <div class="legend-item"><div class="legend-swatch avail"></div> Available &mdash; open for booking</div>
   </div>
 </section>
 
