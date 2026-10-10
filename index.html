@@ -563,6 +563,28 @@
       color: var(--gold); font-size: 0.75rem;
       letter-spacing: 0.05em; margin-bottom: 0.8rem;
     }
+  /* ── PHONES ── (desktop layout unchanged) */
+  @media (max-width: 760px) {
+    nav { flex-wrap: wrap; gap: 0.4rem; padding: 0.6rem 1.2rem; }
+    .nav-links { width: 100%; gap: 1.2rem; overflow-x: auto; white-space: nowrap; scrollbar-width: none; padding-bottom: 0.2rem; }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a { font-size: 0.72rem; }
+    .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 6.5rem; }
+    .hero-text { padding: 2rem 1.2rem 1rem; }
+    .hero-image { padding: 1rem 1.2rem 3rem; }
+    .photo-frame { width: 100%; max-width: 320px; height: auto; aspect-ratio: 420 / 520; }
+    section { padding: 3.5rem 1.2rem; }
+    #about, #rates { grid-template-columns: 1fr; gap: 2.5rem; }
+    .subjects-grid, .testimonials-grid { grid-template-columns: 1fr !important; }
+    .contact-card { padding: 1.5rem; }
+    .stat-bubble { padding: 0.6rem 0.9rem; z-index: 5; }
+    .stat-bubble.left { left: -8px; bottom: 24px; }
+    .stat-bubble.right { right: -8px; top: 24px; }
+    .stat-num { font-size: 1.5rem; }
+    .hero-cta { flex-wrap: wrap; gap: 0.8rem; }
+    .btn-primary, .btn-outline { padding: 0.8rem 1.4rem; }
+    footer { padding: 1.5rem 1.2rem; flex-direction: column; gap: 0.4rem; text-align: center; }
+  }
   </style>
 
 <script>
@@ -1149,6 +1171,11 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   .toggle-btn.active { background: var(--ink); color: var(--cream); border-color: var(--ink); }
   .toggle-btn:hover:not(.active) { border-color: var(--gold); color: var(--gold); }
+  @media (max-width: 760px) {
+    .enquiry-fab { bottom: 1rem; right: 1rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .checkbox-group { grid-template-columns: repeat(2, 1fr) !important; }
+  }
 </style>
 
 <button class="enquiry-fab" onclick="openEnquiry()">
