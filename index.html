@@ -269,6 +269,25 @@
       letter-spacing: 0.08em;
     }
 
+    /* ── FREE PRACTICE (MugCorner) ── */
+    #practice { background: var(--warm); }
+    .practice-intro {
+      font-size: 1rem; line-height: 1.85; color: #3a3628;
+      max-width: 46rem; margin-bottom: 1.2rem;
+    }
+    .practice-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1.2rem;
+      margin: 2rem 0;
+    }
+    .practice-card {
+      display: block; background: white; padding: 1.4rem;
+      border-left: 3px solid var(--gold); text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .practice-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+    .practice-card .qual-card-value { margin-bottom: 0.3rem; }
+    .practice-card p { font-size: 0.85rem; line-height: 1.6; color: #3a3628; }
+
     /* ── TIMETABLE ── */
     #timetable { background: var(--cream); }
     .timetable-note {
@@ -644,6 +663,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#subjects">Subjects</a></li>
+    <li><a href="#practice">Free Practice</a></li>
     <li><a href="#timetable">Timetable</a></li>
     <li><a href="#rates">Rates</a></li>
     <li><a href="#testimonials">Testimonials</a></li>
@@ -756,6 +776,32 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="subject-levels">Contact me to discuss your needs</div>
     </div>
   </div>
+</section>
+
+<!-- FREE PRACTICE (MugCorner) -->
+<section id="practice">
+  <p class="section-label">Free for Students</p>
+  <h2 class="section-title">Practise with MugCorner</h2>
+  <div class="divider"></div>
+  <p class="practice-intro">MugCorner is my Maths practice website for secondary students: Sec 1 to Sec 4, G1, G2 and G3 Maths, E-Math and A-Math. When you get a question wrong, it shows you exactly where your working went wrong and what to do next. These are free, with no sign-up needed:</p>
+  <div class="practice-grid">
+    <a class="practice-card" href="https://www.mugcornersg.com/notes?ref=tuition">
+      <div class="qual-card-label">Notes</div>
+      <div class="qual-card-value">Chapter notes</div>
+      <p>Formulas, worked examples and common mistakes for every chapter.</p>
+    </a>
+    <a class="practice-card" href="https://www.mugcornersg.com/worksheets?ref=tuition">
+      <div class="qual-card-label">Worksheets</div>
+      <div class="qual-card-value">Topical worksheets</div>
+      <p>A printable worksheet for every chapter, with answers and worked solutions.</p>
+    </a>
+    <a class="practice-card" href="https://www.mugcornersg.com/papers?ref=tuition">
+      <div class="qual-card-label">Exam papers</div>
+      <div class="qual-card-value">Exam &amp; test papers</div>
+      <p>WA, EOY, prelim and O-Level / N-Level style papers, with full worked solutions.</p>
+    </a>
+  </div>
+  <a href="https://www.mugcornersg.com/?ref=tuition" class="btn-primary" style="display:inline-block;">Visit MugCorner</a>
 </section>
 
 <!-- TIMETABLE -->
@@ -1015,6 +1061,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- FOOTER -->
 <footer>
   <p>© 2026 T-Leng · Private Tutor Singapore</p>
+  <p>Free Maths practice: <a href="https://www.mugcornersg.com/?ref=tuition" style="color:inherit;">MugCorner</a></p>
   <p>Designed with care ✦</p>
 </footer>
 
