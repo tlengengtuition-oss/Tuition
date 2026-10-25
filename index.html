@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="only light" />
+  <meta name="supported-color-schemes" content="light" />
   <title>T-Leng — Private Tutor Singapore</title>
   <meta name="description" content="T-Leng is a dedicated private tutor in Singapore offering Maths, Science and Python tutoring for Primary, Secondary, IB, IP and IGCSE students. In-person and online sessions available." />
   <meta name="keywords" content="private tutor Singapore, maths tutor, science tutor, python tutor, IB tutor, IGCSE tutor, O-level tutor, primary tutor" />
@@ -54,6 +56,7 @@
   <meta property="og:type" content="website" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
+    :root { color-scheme: only light; }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -620,8 +623,8 @@
     .subjects-grid, .testimonials-grid { grid-template-columns: 1fr !important; }
     .contact-card { padding: 1.5rem; }
     .stat-bubble { padding: 0.6rem 0.9rem; z-index: 5; }
-    .stat-bubble.left { left: -8px; bottom: 24px; }
-    .stat-bubble.right { right: -8px; top: 24px; }
+    .stat-bubble.left { left: -8px; bottom: 48px; }
+    .stat-bubble.right { right: -8px; top: auto; bottom: -22px; }
     .stat-num { font-size: 1.5rem; }
     .hero-cta { flex-wrap: wrap; gap: 0.8rem; }
     .btn-primary, .btn-outline { padding: 0.8rem 1.4rem; }
