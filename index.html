@@ -6,7 +6,50 @@
   <title>T-Leng — Private Tutor Singapore</title>
   <meta name="description" content="T-Leng is a dedicated private tutor in Singapore offering Maths, Science and Python tutoring for Primary, Secondary, IB, IP and IGCSE students. In-person and online sessions available." />
   <meta name="keywords" content="private tutor Singapore, maths tutor, science tutor, python tutor, IB tutor, IGCSE tutor, O-level tutor, primary tutor" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+
+  <!-- Open Graph -->
   <meta property="og:title" content="T-Leng — Private Tutor Singapore" />
+  <meta property="og:image" content="https://tlengtuition.com/profile.png" />
+  <meta property="og:url" content="https://tlengtuition.com" />
+
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "T-Leng Tuition",
+    "description": "Private tutoring in Singapore for Primary, Secondary, IB, IP and IGCSE students. Maths, Science and Python.",
+    "url": "https://tlengtuition.com",
+    "telephone": "+6591866928",
+    "email": "tlengengtuition@gmail.com",
+    "image": "https://tlengtuition.com/profile.png",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "SG",
+      "addressLocality": "Singapore"
+    },
+    "priceRange": "$$",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Tutoring Subjects",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mathematics Tutoring" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Science Tutoring" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Python Programming Tutoring" } }
+      ]
+    },
+    "areaServed": { "@type": "City", "name": "Singapore" },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "3"
+    }
+  }
+  </script>
   <meta property="og:description" content="Patient, personalised tutoring for Primary to JC students. Maths, Science, Python, IB, IP & IGCSE." />
   <meta property="og:type" content="website" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -163,7 +206,7 @@
     .photo-placeholder img {
       image-rendering: auto;
       transform: scaleX(-1);
-      filter: brightness(1.08) contrast(1.1) saturate(0.95) drop-shadow(0 4px 20px rgba(0,0,0,0.12));
+      filter: contrast(1.08) saturate(1.05) drop-shadow(0 4px 20px rgba(0,0,0,0.18));
     }
     .photo-icon {
       width: 80px; height: 80px;
@@ -633,6 +676,11 @@ document.addEventListener('DOMContentLoaded', function() {
       btn.textContent = 'Sending...';
       btn.disabled = true;
       try {
+        // Copy sender email into _replyto so T-Leng can reply directly
+        var emailVal = (document.getElementById('femail') || {}).value || '';
+        var replyTo = document.getElementById('f_replyto');
+        if (replyTo && emailVal) replyTo.value = emailVal;
+
         var res = await fetch(form.action, {
           method: 'POST',
           body: new FormData(form),
@@ -721,7 +769,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="hero-image">
     <div class="photo-frame">
       <div class="photo-placeholder">
-        <img src="20260307_230940.png" alt="T-Leng" style="width:100%; height:100%; object-fit:cover; object-position: center top; display:block;" />
+        <img src="profile.png" alt="T-Leng, Private Tutor Singapore" style="width:100%; height:100%; object-fit:cover; object-position: center top; display:block;" />
       </div>
     </div>
     <div class="stat-bubble left">
@@ -831,9 +879,9 @@ document.addEventListener('DOMContentLoaded', function() {
   <p class="section-label">Availability</p>
   <h2 class="section-title">Weekly Timetable</h2>
   <div class="divider"></div>
-  <p class="timetable-note">Updated based on current student schedule. All available slots include at least 1 hour travel buffer. Contact me to book a slot!</p>
+  <p class="timetable-note">Live schedule — updates automatically from TutorDeck when bookings change. White gaps are available. Contact me to book an open slot!</p>
   <div class="timetable-wrap">
-    <div class="schedule-board">
+    <div class="schedule-board" id="schedule-board">
       <div class="corner-cell"></div>
       <div class="schedule-header">Mon</div>
       <div class="schedule-header">Tue</div>
@@ -858,37 +906,14 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="time-label">9 PM</div>
       </div>
 
-      <div class="day-column">
-        <div class="schedule-event" style="top: 384px; height: 96px;"><span class="event-time">16:00–17:30</span></div>
-        <div class="schedule-event" style="top: 512px; height: 96px;"><span class="event-time">18:00–19:30</span></div>
-        <div class="schedule-event" style="top: 640px; height: 96px;"><span class="event-time">20:00–21:30</span></div>
-      </div>
-      <div class="day-column">
-        <div class="schedule-event" style="top: 512px; height: 64px;"><span class="event-time">18:00–19:00</span></div>
-        <div class="schedule-event" style="top: 576px; height: 64px;"><span class="event-time">19:00–20:00</span></div>
-      </div>
-      <div class="day-column">
-        <div class="schedule-event" style="top: 448px; height: 96px;"><span class="event-time">17:00–18:30</span></div>
-        <div class="schedule-event" style="top: 608px; height: 96px;"><span class="event-time">19:30–21:00</span></div>
-      </div>
-      <div class="day-column">
-        <div class="schedule-event" style="top: 288px; height: 96px;"><span class="event-time">14:30–16:00</span></div>
-        <div class="schedule-event" style="top: 448px; height: 128px;"><span class="event-time">17:00–19:00</span></div>
-        <div class="schedule-event" style="top: 608px; height: 64px;"><span class="event-time">19:30–20:30</span></div>
-      </div>
-      <div class="day-column">
-        <div class="schedule-event" style="top: 512px; height: 96px;"><span class="event-time">18:00–19:30</span></div>
-      </div>
-      <div class="day-column">
-        <div class="schedule-event" style="top: 64px; height: 96px;"><span class="event-time">11:00–12:30</span></div>
-        <div class="schedule-event" style="top: 256px; height: 96px;"><span class="event-time">14:00–15:30</span></div>
-        <div class="schedule-event" style="top: 416px; height: 96px;"><span class="event-time">16:30–18:00</span></div>
-      </div>
-      <div class="day-column">
-        <div class="schedule-event" style="top: 0px; height: 128px;"><span class="event-time">10:00–12:00</span></div>
-        <div class="schedule-event" style="top: 256px; height: 96px;"><span class="event-time">14:00–15:30</span></div>
-        <div class="schedule-event" style="top: 448px; height: 96px;"><span class="event-time">17:00–18:30</span></div>
-      </div>
+      <!-- Day columns — filled live by the timetable script below -->
+      <div class="day-column"></div>
+      <div class="day-column"></div>
+      <div class="day-column"></div>
+      <div class="day-column"></div>
+      <div class="day-column"></div>
+      <div class="day-column"></div>
+      <div class="day-column"></div>
     </div>
   </div>
   <div class="legend">
@@ -976,72 +1001,36 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="testimonial-card">
       <div class="testimonial-stars">★★★★★</div>
       <div class="testimonial-quote">"</div>
-      <p class="testimonial-text">T-Leng has been tutoring my son in O-Level Maths for 6 months and the improvement has been remarkable. He went from a D7 to a B3 — we couldn't be happier.</p>
+      <p class="testimonial-text">Mr Eng is reliable and patient. My son became more confident in Math and Physics and his results improved — he got A1 in Math.</p>
       <div class="testimonial-author">
-        <div class="testimonial-avatar">M</div>
+        <div class="testimonial-avatar">T</div>
         <div>
-          <div class="testimonial-name">Mrs. Tan</div>
-          <div class="testimonial-role">Parent · Sec 4 student</div>
+          <div class="testimonial-name">Mrs Tan</div>
+          <div class="testimonial-role">Parent · Sec 4 Mathematics &amp; Physics</div>
         </div>
       </div>
     </div>
     <div class="testimonial-card">
-      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-stars">★★★★☆</div>
       <div class="testimonial-quote">"</div>
-      <p class="testimonial-text">Very patient and explains concepts really clearly. I used to dread Maths but now I actually look forward to the sessions. My PSLE results improved a lot!</p>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar">J</div>
-        <div>
-          <div class="testimonial-name">Javier L.</div>
-          <div class="testimonial-role">Student · P6 Mathematics</div>
-        </div>
-      </div>
-    </div>
-    <div class="testimonial-card">
-      <div class="testimonial-stars">★★★★★</div>
-      <div class="testimonial-quote">"</div>
-      <p class="testimonial-text">T-Leng's Python lessons are structured and practical. My daughter picked up programming faster than I expected — she's now building her own projects at home.</p>
+      <p class="testimonial-text">Mr T-Leng is able to deliver Math concepts clearly and professionally. My girl now understands better and enjoys attending his class.</p>
       <div class="testimonial-author">
         <div class="testimonial-avatar">L</div>
         <div>
-          <div class="testimonial-name">Mr. Lim</div>
-          <div class="testimonial-role">Parent · Sec 2 Python student</div>
+          <div class="testimonial-name">Ms Ling</div>
+          <div class="testimonial-role">Parent · P6 Mathematics</div>
         </div>
       </div>
     </div>
     <div class="testimonial-card">
       <div class="testimonial-stars">★★★★★</div>
       <div class="testimonial-quote">"</div>
-      <p class="testimonial-text">Highly recommended for IB Maths. T-Leng really understands the IB curriculum and helped me tackle the internal assessments with confidence.</p>
+      <p class="testimonial-text">Explanations are clear and the practices given are useful.</p>
       <div class="testimonial-author">
-        <div class="testimonial-avatar">A</div>
+        <div class="testimonial-avatar">H</div>
         <div>
-          <div class="testimonial-name">Aisha R.</div>
-          <div class="testimonial-role">Student · IB Mathematics</div>
-        </div>
-      </div>
-    </div>
-    <div class="testimonial-card">
-      <div class="testimonial-stars">★★★★★</div>
-      <div class="testimonial-quote">"</div>
-      <p class="testimonial-text">We tried a few tutors before T-Leng and he's by far the best. He tracks my child's progress carefully and adjusts his teaching to fill the gaps.</p>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar">S</div>
-        <div>
-          <div class="testimonial-name">Mrs. Ng</div>
-          <div class="testimonial-role">Parent · Lower Sec Science</div>
-        </div>
-      </div>
-    </div>
-    <div class="testimonial-card">
-      <div class="testimonial-stars">★★★★★</div>
-      <div class="testimonial-quote">"</div>
-      <p class="testimonial-text">Online sessions are just as effective as in-person. T-Leng uses digital whiteboards really well and my son never feels like anything is lost over Zoom.</p>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar">R</div>
-        <div>
-          <div class="testimonial-name">Mr. Rajan</div>
-          <div class="testimonial-role">Parent · Online sessions</div>
+          <div class="testimonial-name">Mr Huang</div>
+          <div class="testimonial-role">Parent · JC 1 Mathematics</div>
         </div>
       </div>
     </div>
@@ -1293,6 +1282,10 @@ document.addEventListener('DOMContentLoaded', function() {
       <textarea id="fnotes" name="notes" placeholder="e.g. upcoming exams, weak topics, special needs..."></textarea>
     </div>
 
+    <!-- Formspree helpers: reply-to sender, email subject line -->
+    <input type="hidden" name="_replyto" id="f_replyto" value="" />
+    <input type="hidden" name="_subject" value="New tuition enquiry — T-Leng Tuition" />
+
     <button type="submit" class="enquiry-submit">Submit Enquiry →</button>
   </form>
 
@@ -1302,5 +1295,36 @@ document.addEventListener('DOMContentLoaded', function() {
     <p>Thank you for reaching out. T-Leng will be in touch within 24 hours via email or WhatsApp.</p>
   </div>
 </div>
+
+<!-- Live timetable: fetches from Supabase public_schedule() function -->
+<script>
+(function () {
+  var SUPA_URL = 'https://rnjvswkejbrhbaytutai.supabase.co';
+  var SUPA_KEY = 'sb_publishable_IKUtlGhnwJT0Hld5A8cglw_0iF6Y5J9';
+  var GRID_START = 10; var PX_PER_HR = 64;
+  function toMins(t) { var p=(t||'0:0').split(':'); return (+p[0]||0)*60+(+p[1]||0); }
+  function fmt12(t) { var p=(t||'0:00').split(':'),h=+p[0],m=p[1]||'00'; return (h%12||12)+':'+m+(h<12?'AM':'PM'); }
+  function pos(s,e) { var gm=GRID_START*60; return {top:Math.max(0,(toMins(s)-gm)/60*PX_PER_HR),height:Math.max(20,(toMins(e)-toMins(s))/60*PX_PER_HR)}; }
+  function render(slots) {
+    var byDay=[[],[],[],[],[],[],[]];
+    (slots||[]).forEach(function(s){if(s.weekday>=0&&s.weekday<=6)byDay[s.weekday].push(s);});
+    document.querySelectorAll('#schedule-board .day-column').forEach(function(col,i){
+      col.innerHTML=(byDay[i]||[]).map(function(s){var p=pos(s.start_time,s.end_time);
+        return '<div class="schedule-event" style="top:'+p.top+'px;height:'+p.height+'px"><span class="event-time">'+fmt12(s.start_time)+'–'+fmt12(s.end_time)+'</span><span class="event-text">Taken</span></div>';
+      }).join('');
+    });
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    fetch(SUPA_URL+'/rest/v1/rpc/public_schedule',{
+      method:'POST',
+      headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Content-Type':'application/json'},
+      body:'{}'
+    })
+    .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
+    .then(render)
+    .catch(function(err){console.warn('[T-Leng timetable]',err.message);});
+  });
+})();
+</script>
 </body>
 </html>
