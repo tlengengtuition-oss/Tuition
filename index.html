@@ -5,16 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="only light" />
   <meta name="supported-color-schemes" content="light" />
-  <title>T-Leng — Private Tutor Singapore</title>
-  <meta name="description" content="T-Leng is a dedicated private tutor in Singapore offering Maths, Science and Python tutoring for Primary, Secondary, IB, IP and IGCSE students. In-person and online sessions available." />
-  <meta name="keywords" content="private tutor Singapore, maths tutor, science tutor, python tutor, IB tutor, IGCSE tutor, O-level tutor, primary tutor" />
+  <title>T-Leng Tuition — Maths, Science &amp; English Tutor Singapore | PSLE to A-Level</title>
+  <link rel="canonical" href="https://tlengtuition.com/" />
+  <meta name="description" content="Home and online tuition in Singapore with T-Leng (Mr Eng). Maths for PSLE, G1/G2/G3, E-Math, A-Math and H2; Science; English; Python and H2 Computing. Live weekly availability and clear lesson terms." />
+  <meta name="keywords" content="home tutor Singapore, maths tutor, PSLE maths tutor, A-Math tutor, E-Math tutor, H2 maths tutor, O-Level tutor, N-Level tutor, G1 G2 G3 maths, science tutor, English tutor, H2 Computing tutor, Python tutor, IB IP IGCSE tutor" />
 
   <!-- Favicon -->
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="T-Leng — Private Tutor Singapore" />
+  <meta property="og:title" content="T-Leng Tuition — Home &amp; Online Tutor, Singapore" />
   <meta property="og:image" content="https://tlengtuition.com/profile.png" />
   <meta property="og:url" content="https://tlengtuition.com" />
 
@@ -24,7 +25,7 @@
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "T-Leng Tuition",
-    "description": "Private tutoring in Singapore for Primary, Secondary, IB, IP and IGCSE students. Maths, Science and Python.",
+    "description": "Home and online tuition in Singapore: Maths (PSLE to H2), Science, English, Python and H2 Computing.",
     "url": "https://tlengtuition.com",
     "telephone": "+6591866928",
     "email": "tlengengtuition@gmail.com",
@@ -41,18 +42,19 @@
       "itemListElement": [
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mathematics Tutoring" } },
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Science Tutoring" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Python Programming Tutoring" } }
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "English Tutoring" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Python and H2 Computing Tutoring" } }
       ]
     },
     "areaServed": { "@type": "City", "name": "Singapore" },
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "4.8",
+      "ratingValue": "4.7",
       "reviewCount": "3"
     }
   }
   </script>
-  <meta property="og:description" content="Patient, personalised tutoring for Primary to JC students. Maths, Science, Python, IB, IP & IGCSE." />
+  <meta property="og:description" content="Patient, structured home and online tuition, Primary to JC. Maths, Science, English, Python and H2 Computing." />
   <meta property="og:type" content="website" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
@@ -65,7 +67,9 @@
       --gold:    #c9a84c;
       --gold-lt: #e8d5a3;
       --warm:    #f9f5ed;
-      --muted:   #7a7060;
+      --muted:   #6b6252;
+      --gold-text: #7d621a;  /* small gold text on light bg: 5:1 */
+      --gold-deep: #9a7a26;  /* large gold text on light bg: 3.5:1+ */
       --border:  #ddd5c0;
     }
 
@@ -125,7 +129,7 @@
     .hero-eyebrow {
       font-size: 0.72rem; font-weight: 500;
       letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 1.4rem;
+      color: var(--gold-text); margin-bottom: 1.4rem;
       display: flex; align-items: center; gap: 0.8rem;
     }
     .hero-eyebrow::before {
@@ -139,7 +143,7 @@
       color: var(--ink); margin-bottom: 0.2rem;
     }
     .hero h1 em {
-      font-style: italic; color: var(--gold);
+      font-style: italic; color: var(--gold-deep);
     }
     .hero-subtitle {
       font-family: 'Cormorant Garamond', serif;
@@ -156,7 +160,8 @@
       border-radius: 2px; color: var(--muted);
       background: rgba(255,255,255,0.5);
     }
-    .hero-cta { display: flex; gap: 1rem; }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-cta a { white-space: nowrap; }
     .btn-primary {
       padding: 0.9rem 2.2rem;
       background: var(--ink); color: var(--cream);
@@ -224,13 +229,13 @@
     }
     .stat-bubble {
       position: absolute; background: white;
-      padding: 1rem 1.4rem; box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      padding: 1rem 1.4rem; box-shadow: 0 8px 30px rgba(0,0,0,0.1); z-index: 3;
     }
-    .stat-bubble.left { bottom: 60px; left: -60px; }
-    .stat-bubble.right { top: 80px; right: -50px; }
+    .stat-bubble.left { bottom: 36px; left: -48px; }
+    .stat-bubble.right { top: 48px; right: -44px; }
     .stat-num {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem; font-weight: 600; color: var(--gold);
+      font-size: 2rem; font-weight: 600; color: var(--gold-deep);
       line-height: 1;
     }
     .stat-label {
@@ -244,7 +249,7 @@
     .section-label {
       font-size: 0.7rem; font-weight: 500;
       letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 0.8rem;
+      color: var(--gold-text); margin-bottom: 0.8rem;
     }
     .section-title {
       font-family: 'Cormorant Garamond', serif;
@@ -277,7 +282,7 @@
     .qual-card-label {
       font-size: 0.65rem; font-weight: 500;
       letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 0.3rem;
+      color: var(--gold-text); margin-bottom: 0.3rem;
     }
     .qual-card-value {
       font-family: 'Cormorant Garamond', serif;
@@ -303,15 +308,15 @@
       border-color: var(--gold);
       background: rgba(201,168,76,0.06);
     }
-    .subject-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+    .subject-icon { color: var(--gold); margin-bottom: 1rem; line-height: 0; }
     .subject-name {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.3rem; font-weight: 600;
       color: var(--cream); margin-bottom: 0.4rem;
     }
     .subject-levels {
-      font-size: 0.72rem; color: rgba(255,255,255,0.45);
-      letter-spacing: 0.08em;
+      font-size: 0.78rem; color: rgba(255,255,255,0.68);
+      letter-spacing: 0.04em; line-height: 1.6;
     }
 
     /* ── FREE PRACTICE (MugCorner) ── */
@@ -482,7 +487,7 @@
     .rate-sub { font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem; }
     .rate-price {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem; font-weight: 600; color: var(--gold);
+      font-size: 1.4rem; font-weight: 600; color: var(--gold-deep); white-space: nowrap;
     }
     .rate-unit { font-size: 0.7rem; color: var(--muted); }
 
@@ -494,7 +499,8 @@
     .info-block-title {
       font-size: 0.68rem; font-weight: 500;
       letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 0.5rem;
+      color: var(--gold-text); margin-bottom: 0.5rem;
+      display: flex; align-items: center; gap: 0.45rem;
     }
     .info-block p { font-size: 0.88rem; line-height: 1.7; color: var(--muted); }
 
@@ -504,8 +510,8 @@
     #contact .section-title { color: var(--cream); }
     #contact .divider { margin: 0 auto 2rem; }
     .contact-sub {
-      font-size: 1rem; color: rgba(255,255,255,0.5);
-      max-width: 480px; margin: 0 auto 3rem;
+      font-size: 1rem; color: rgba(255,255,255,0.72);
+      max-width: 520px; margin: 0 auto 3rem;
       line-height: 1.7;
     }
     .contact-grid {
@@ -523,7 +529,7 @@
       border-color: var(--gold);
       background: rgba(201,168,76,0.06);
     }
-    .contact-card-icon { font-size: 1.6rem; margin-bottom: 0.8rem; }
+    .contact-card-icon { color: var(--gold); margin-bottom: 0.8rem; line-height: 0; }
     .contact-card-label {
       font-size: 0.65rem; font-weight: 500;
       letter-spacing: 0.18em; text-transform: uppercase;
@@ -544,8 +550,8 @@
       display: flex; justify-content: space-between; align-items: center;
     }
     footer p {
-      font-size: 0.72rem; color: rgba(255,255,255,0.3);
-      letter-spacing: 0.06em;
+      font-size: 0.75rem; color: rgba(255,255,255,0.62);
+      letter-spacing: 0.04em;
     }
 
     /* ── ANIMATIONS ── */
@@ -559,6 +565,34 @@
     .hero-tags    { animation: fadeUp 0.7s 0.35s ease both; }
     .hero-cta     { animation: fadeUp 0.7s 0.45s ease both; }
     .hero-image   { animation: fadeUp 0.9s 0.3s ease both; }
+
+    /* ── ADDED: WhatsApp button, rates note, open slots, FAQ ── */
+    .btn-wa { display: inline-flex; align-items: center; gap: 0.55rem; }
+    .btn-wa .ico { width: 18px; height: 18px; }
+    .rates-note { font-size: 0.92rem; line-height: 1.75; color: #3a3628; margin: -0.6rem 0 1.6rem; max-width: 34rem; }
+    .open-slots { margin: 0 0 2rem; }
+    .open-slots h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 600; margin-bottom: 0.9rem; }
+    .slot-days { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 0.7rem; }
+    .slot-day { background: white; border-left: 3px solid var(--gold); padding: 0.75rem 1rem; }
+    .slot-day b { display: block; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-text); margin-bottom: 0.25rem; }
+    .slot-day span { font-size: 0.92rem; color: var(--ink); line-height: 1.6; }
+    .slot-day.full span { color: var(--muted); font-style: italic; }
+    .tt-status { font-size: 0.92rem; color: var(--ink); background: white; border-left: 3px solid var(--gold); padding: 0.9rem 1.1rem; margin-bottom: 1.4rem; }
+    .tt-status a { color: var(--gold-text); font-weight: 500; }
+    #faq { background: var(--warm); }
+    .faq-list { max-width: 50rem; }
+    .faq-list details { background: white; border-left: 3px solid var(--gold-lt); margin-bottom: 0.7rem; }
+    .faq-list details[open] { border-left-color: var(--gold); }
+    .faq-list summary { cursor: pointer; padding: 1.05rem 1.3rem; font-weight: 500; font-size: 0.98rem; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after { content: '+'; color: var(--gold-text); font-size: 1.2rem; line-height: 1; }
+    .faq-list details[open] summary::after { content: '\2212'; }
+    .faq-body { padding: 0 1.3rem 1.2rem; font-size: 0.92rem; line-height: 1.75; color: #3a3628; }
+    .faq-body ul { padding-left: 1.2rem; margin: 0.4rem 0; }
+    .faq-body li { margin-bottom: 0.3rem; }
+    .faq-terms { margin-top: 1.6rem; font-size: 0.92rem; color: var(--muted); }
+    .faq-terms a { color: var(--gold-text); font-weight: 500; }
+    .mobile-cta { display: none; }
     /* ── TESTIMONIALS ── */
     #testimonials { background: var(--cream); }
     .testimonials-grid {
@@ -594,7 +628,7 @@
       width: 40px; height: 40px; border-radius: 50%;
       background: linear-gradient(135deg, var(--gold-lt), var(--gold));
       display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; font-weight: 600; color: white;
+      font-size: 1rem; font-weight: 600; color: var(--ink);
       flex-shrink: 0;
       font-family: 'Cormorant Garamond', serif;
     }
@@ -605,16 +639,28 @@
       font-size: 0.72rem; color: var(--muted); margin-top: 0.15rem;
     }
     .testimonial-stars {
-      color: var(--gold); font-size: 0.75rem;
+      color: var(--gold-text); font-size: 0.85rem;
       letter-spacing: 0.05em; margin-bottom: 0.8rem;
     }
   /* ── PHONES ── (desktop layout unchanged) */
   @media (max-width: 760px) {
-    nav { flex-wrap: wrap; gap: 0.4rem; padding: 0.6rem 1.2rem; }
-    .nav-links { width: 100%; gap: 1.2rem; overflow-x: auto; white-space: nowrap; scrollbar-width: none; padding-bottom: 0.2rem; }
-    .nav-links::-webkit-scrollbar { display: none; }
-    .nav-links a { font-size: 0.72rem; }
-    .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 6.5rem; }
+    nav { flex-wrap: wrap; gap: 0.3rem; padding: 0.5rem 1rem; justify-content: center; }
+    .nav-logo svg { height: 40px; }
+    .nav-links { width: 100%; flex-wrap: wrap; justify-content: center; gap: 0.35rem 1rem; }
+    .nav-links a { font-size: 0.7rem; letter-spacing: 0.08em; }
+    .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 7.6rem; }
+    section[id] { scroll-margin-top: 7rem; }
+    body { padding-bottom: 64px; }
+    .enquiry-fab { display: none !important; }
+    .mobile-cta { display: grid; grid-template-columns: 1fr 1fr; position: fixed; left: 0; right: 0; bottom: 0; z-index: 998;
+      box-shadow: 0 -4px 18px rgba(0,0,0,0.12); }
+    .mobile-cta a, .mobile-cta button { display: flex; align-items: center; justify-content: center; gap: 0.5rem; height: 56px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none; border: none; cursor: pointer; }
+    .mobile-cta .wa { background: var(--ink); color: var(--cream); }
+    .mobile-cta .enq { background: var(--gold); color: var(--ink); }
+    .timetable-wrap, .legend { display: none; }
+    .hero h1 { font-size: 2.6rem; }
     .hero-text { padding: 2rem 1.2rem 1rem; }
     .hero-image { padding: 1rem 1.2rem 3rem; }
     .photo-frame { width: 100%; max-width: 320px; height: auto; aspect-ratio: 420 / 520; }
@@ -624,6 +670,7 @@
     .contact-card { padding: 1.5rem; }
     .stat-bubble { padding: 0.6rem 0.9rem; z-index: 5; }
     .stat-bubble.left { left: -8px; bottom: 48px; }
+    .hero-cta a { flex: 1 1 auto; justify-content: center; text-align: center; }
     .stat-bubble.right { right: -8px; top: auto; bottom: -22px; }
     .stat-num { font-size: 1.5rem; }
     .hero-cta { flex-wrap: wrap; gap: 0.8rem; }
@@ -708,7 +755,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">
+  <a href="#" class="nav-logo" aria-label="T-Leng Tuition home">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 160" height="52" style="display:block;">
       <defs>
         <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -726,7 +773,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <line x1="128" y1="40" x2="128" y2="120" stroke="rgba(201,168,76,0.25)" stroke-width="1"/>
       <text x="148" y="75" font-family="Georgia, 'Times New Roman', serif" font-size="36" font-weight="400" fill="#f5f0e8" letter-spacing="3">T-LENG</text>
       <line x1="148" y1="83" x2="340" y2="83" stroke="url(#goldGrad)" stroke-width="1.5"/>
-      <text x="149" y="106" font-family="Arial, sans-serif" font-size="10.5" font-weight="400" fill="rgba(245,240,232,0.55)" letter-spacing="3.5">PRIVATE TUTOR · SINGAPORE</text>
+      <text x="149" y="106" font-family="Arial, sans-serif" font-size="10.5" font-weight="400" fill="rgba(245,240,232,0.75)" letter-spacing="3.5">TUITION · SINGAPORE</text>
       <circle cx="354" cy="65" r="2" fill="rgba(201,168,76,0.4)"/>
       <circle cx="362" cy="65" r="2" fill="rgba(201,168,76,0.25)"/>
       <circle cx="370" cy="65" r="2" fill="rgba(201,168,76,0.12)"/>
@@ -738,7 +785,8 @@ document.addEventListener('DOMContentLoaded', function() {
     <li><a href="#practice">Free Practice</a></li>
     <li><a href="#timetable">Timetable</a></li>
     <li><a href="#rates">Rates</a></li>
-    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -746,41 +794,45 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- HERO -->
 <section class="hero">
   <div class="hero-text">
-    <p class="hero-eyebrow">Private Tutor · Singapore</p>
+    <p class="hero-eyebrow">T-Leng Tuition · Singapore</p>
     <h1>
       Helping students<br>
-      <em>achieve more</em><br>
-      than they thought<br>possible.
+      <em>achieve more.</em>
     </h1>
     <p class="hero-subtitle">
-      Patient, structured, and results-driven tutoring<br>
-      for primary, secondary & JC students.
+      Maths, Science, English &amp; Computing tuition, Primary to JC.<br>
+      Patient, structured lessons at your home or online.
     </p>
     <div class="hero-tags">
-      <span class="tag">Mathematics</span>
-      <span class="tag">Science</span>
-      <span class="tag">Python</span>
+      <span class="tag">PSLE</span>
+      <span class="tag">O-Level · N-Level</span>
+      <span class="tag">G1 · G2 · G3</span>
+      <span class="tag">E-Math · A-Math</span>
+      <span class="tag">H2 Maths · H2 Computing</span>
       <span class="tag">IB · IP · IGCSE</span>
     </div>
     <div class="hero-cta">
-      <a href="#timetable" class="btn-primary">View Availability</a>
-      <a href="#contact" class="btn-outline">Get in Touch</a>
+      <a href="https://wa.me/6591866928?text=Hi%20T-Leng%2C%20I%27m%20interested%20in%20tuition.%20Level%3A%20%20Subject%3A%20%20Area%3A%20" class="btn-primary btn-wa" target="_blank" rel="noopener"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4.3A8.5 8.5 0 1 1 8 19.3z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8c-1-.4-2.4-1.8-2.8-2.8l.8-1-1-2z"/></svg> WhatsApp Me</a>
+      <a href="#timetable" class="btn-outline">See Open Slots</a>
     </div>
   </div>
 
   <div class="hero-image">
     <div class="photo-frame">
       <div class="photo-placeholder">
-        <img src="profile.png" alt="T-Leng, Private Tutor Singapore" style="width:100%; height:100%; object-fit:cover; object-position: center top; display:block;" />
+        <picture>
+          <source srcset="profile.webp" type="image/webp" />
+          <img src="profile.png" alt="T-Leng (Mr Eng), tutor at T-Leng Tuition" width="840" height="1040" style="width:100%; height:100%; object-fit:cover; object-position: center top; display:block;" />
+        </picture>
       </div>
-    </div>
-    <div class="stat-bubble left">
-      <div class="stat-num">5+</div>
-      <div class="stat-label">Years tutoring</div>
-    </div>
-    <div class="stat-bubble right">
-      <div class="stat-num">95%</div>
-      <div class="stat-label">Grade improvement</div>
+      <div class="stat-bubble left">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Years tutoring</div>
+      </div>
+      <div class="stat-bubble right">
+        <div class="stat-num">4.7&#9733;</div>
+        <div class="stat-label">Parent rating</div>
+      </div>
     </div>
   </div>
 </section>
@@ -792,7 +844,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <h2 class="section-title">A passion for teaching, a track record of results.</h2>
     <div class="divider"></div>
     <p>
-      Hi, I'm <strong>T-Leng</strong> — a kind, patient and dedicated private tutor based in Singapore with over 5 years of experience helping students across all levels reach their academic potential. I graduated from <strong>Singapore Management University</strong> with a Bachelor of Science in Information Systems, and have since worked closely with families across Singapore.
+      Hi, I'm <strong>T-Leng</strong> (Mr Eng to my students) — a kind, patient and dedicated private tutor based in Singapore with over 5 years of experience helping students across all levels reach their academic potential. I graduated from <strong>Singapore Management University</strong> with a Bachelor of Science in Information Systems, and have since worked closely with families across Singapore.
     </p>
     <p>
       I believe in motivating students through engaging lessons and building their self-confidence. My approach focuses on personalised guidance — helping students not only understand the subject matter, but also develop independent learning skills that will serve them well beyond the classroom.
@@ -812,7 +864,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
     <div class="qual-card">
       <div class="qual-card-label">Subjects</div>
-      <div class="qual-card-value">Maths · Science · Python<br><small style="font-size:0.8rem;color:var(--muted)">IB · IP · IGCSE · O-Level</small></div>
+      <div class="qual-card-value">Maths · Science · English · Computing<br><small style="font-size:0.8rem;color:var(--muted)">PSLE · O/N-Level · A-Level · IB · IP</small></div>
     </div>
     <div class="qual-card">
       <div class="qual-card-label">Location</div>
@@ -828,24 +880,29 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="divider"></div>
   <div class="subjects-grid" style="grid-template-columns: repeat(3, 1fr);">
     <div class="subject-card">
-      <div class="subject-icon">➕</div>
+      <div class="subject-icon"><svg class="ico" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v6M9 7h6"/><path d="M5 17h6"/><path d="M14.5 14.5l4 4M18.5 14.5l-4 4"/><rect x="2.5" y="2.5" width="19" height="19" rx="2"/></svg></div>
       <div class="subject-name">Mathematics</div>
-      <div class="subject-levels">Primary · Lower Sec · O-Level · IB · IP · IGCSE</div>
+      <div class="subject-levels">Primary &amp; PSLE · Sec G1 / G2 / G3 · E-Math &amp; A-Math · JC H2 Maths · IB · IP · IGCSE</div>
     </div>
     <div class="subject-card">
-      <div class="subject-icon">🔬</div>
+      <div class="subject-icon"><svg class="ico" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2.2h12.4a1.5 1.5 0 0 0 1.3-2.2L14 9V3"/><path d="M7 15h10"/></svg></div>
       <div class="subject-name">Science</div>
-      <div class="subject-levels">Primary · Lower Secondary</div>
+      <div class="subject-levels">Primary &amp; PSLE · Lower Secondary · Upper Sec Physics &amp; Chemistry</div>
     </div>
     <div class="subject-card">
-      <div class="subject-icon">🐍</div>
-      <div class="subject-name">Python Programming</div>
-      <div class="subject-levels">Primary · Lower Sec · Upper Sec</div>
+      <div class="subject-icon"><svg class="ico" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H20v16H5.5A1.5 1.5 0 0 0 4 20.5z"/><path d="M4 20.5A1.5 1.5 0 0 0 5.5 22H20"/><path d="M8 7h8M8 11h6"/></svg></div>
+      <div class="subject-name">English</div>
+      <div class="subject-levels">Composition &amp; situational writing · O-Level Literature</div>
     </div>
     <div class="subject-card">
-      <div class="subject-icon">💬</div>
-      <div class="subject-name">Other Subjects</div>
-      <div class="subject-levels">Contact me to discuss your needs</div>
+      <div class="subject-icon"><svg class="ico" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></svg></div>
+      <div class="subject-name">Computing</div>
+      <div class="subject-levels">Python programming · JC H2 Computing</div>
+    </div>
+    <div class="subject-card">
+      <div class="subject-icon"><svg class="ico" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/></svg></div>
+      <div class="subject-name">Something else?</div>
+      <div class="subject-levels">Message me and we can discuss what your child needs</div>
     </div>
   </div>
 </section>
@@ -881,7 +938,12 @@ document.addEventListener('DOMContentLoaded', function() {
   <p class="section-label">Availability</p>
   <h2 class="section-title">Weekly Timetable</h2>
   <div class="divider"></div>
-  <p class="timetable-note">Live schedule — updates automatically from TutorDeck when bookings change. White gaps are available. Contact me to book an open slot!</p>
+  <p class="timetable-note">Live from my booking system, so it updates as soon as a slot is taken. Lessons run 10am – 10pm daily.</p>
+  <div id="tt-status" class="tt-status">Loading this week&rsquo;s availability&hellip;</div>
+  <div class="open-slots" id="open-slots" hidden>
+    <h3>Open slots</h3>
+    <div class="slot-days" id="slot-days"></div>
+  </div>
   <div class="timetable-wrap">
     <div class="schedule-board" id="schedule-board">
       <div class="corner-cell"></div>
@@ -930,6 +992,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <p class="section-label">Pricing</p>
     <h2 class="section-title">Tuition Rates</h2>
     <div class="divider"></div>
+    <p class="rates-note">Your rate within each range depends on the level and your location (travel distance to your home). WhatsApp me your area and your child&rsquo;s level for an exact quote.</p>
     <div class="rates-grid">
       <div class="rate-row">
         <div>
@@ -954,7 +1017,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="rate-row">
         <div>
           <div class="rate-level">Upper Secondary</div>
-          <div class="rate-sub">Sec 3 – 4 · O-Level Mathematics</div>
+          <div class="rate-sub">Sec 3 – 4 · E-Math, A-Math &amp; Science</div>
         </div>
         <div>
           <div class="rate-price">$60–70</div>
@@ -963,8 +1026,8 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
       <div class="rate-row">
         <div>
-          <div class="rate-level">IB / IP / IGCSE / JC</div>
-          <div class="rate-sub">International & Junior College · Mathematics</div>
+          <div class="rate-level">JC / IB / IP / IGCSE</div>
+          <div class="rate-sub">H2 Maths, H2 Computing &amp; international curricula</div>
         </div>
         <div>
           <div class="rate-price">$80–90</div>
@@ -976,19 +1039,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
   <div class="info-blocks">
     <div class="info-block">
-      <div class="info-block-title">📍 Location</div>
-      <p>Home tuition available across Singapore. Online sessions via Zoom also available island-wide and internationally.</p>
+      <div class="info-block-title"><svg class="ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg> Location</div>
+      <p>Home tuition across Singapore. Online lessons on Zoom or Google Meet at the same fee.</p>
     </div>
     <div class="info-block">
-      <div class="info-block-title">📅 Session Length</div>
+      <div class="info-block-title"><svg class="ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Session Length</div>
       <p>Typical sessions run 1.5 – 2 hours. Longer sessions available for intensive exam prep.</p>
     </div>
     <div class="info-block">
-      <div class="info-block-title">💳 Payment</div>
-      <p>PayNow / Bank Transfer accepted. Invoiced monthly or per session — flexible arrangements.</p>
+      <div class="info-block-title"><svg class="ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="1.5"/><path d="M2.5 9.5h19M6 15h4"/></svg> Payment</div>
+      <p>Billed monthly after the month&rsquo;s lessons, by PayNow. Fees are confirmed in writing when lessons start.</p>
     </div>
     <div class="info-block">
-      <div class="info-block-title">🎯 Trial Lesson</div>
+      <div class="info-block-title"><svg class="ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg> Trial Lesson</div>
       <p>First trial lesson available at a discounted rate. No commitment required.</p>
     </div>
   </div>
@@ -1039,43 +1102,97 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 </section>
 
+
+<!-- FAQ -->
+<section id="faq">
+  <p class="section-label">Before You Start</p>
+  <h2 class="section-title">Questions parents ask</h2>
+  <div class="divider"></div>
+  <div class="faq-list">
+    <details>
+      <summary>What if we need to cancel or reschedule a lesson?</summary>
+      <div class="faq-body">
+        <ul>
+          <li><b>24 hours&rsquo; notice or more:</b> no charge, and the lesson is rescheduled.</li>
+          <li><b>Less than 24 hours:</b> still no charge if you move the lesson to another slot in the same month (up to twice a month), switch it to an online lesson, or it&rsquo;s a medical or family emergency. Otherwise 50% of the fee applies.</li>
+          <li><b>Less than 1 hour, or no-show:</b> the full fee applies.</li>
+        </ul>
+        Please give notice by WhatsApp to +65 9186 6928.
+      </div>
+    </details>
+    <details>
+      <summary>What if you are late or need to cancel?</summary>
+      <div class="faq-body">Any time I lose is made up in full: by extending the lesson, adding it to the next one, or refunding it, whichever suits you. If I have to cancel, the lesson is rescheduled or credited in full on the next invoice.</div>
+    </details>
+    <details>
+      <summary>How does payment work?</summary>
+      <div class="faq-body">Fees are agreed when lessons start and confirmed in writing. You&rsquo;re billed monthly after the month&rsquo;s lessons, payable by PayNow within a week. Fees are reviewed once a year and when your child moves up a level, with at least two weeks&rsquo; notice.</div>
+    </details>
+    <details>
+      <summary>Are there lessons on public holidays and school holidays?</summary>
+      <div class="faq-body">No lessons on public holidays unless we both agree; make-ups are arranged together. During school holidays your regular slot continues unless you tell me otherwise. For family trips, give two weeks&rsquo; notice and there&rsquo;s no charge.</div>
+    </details>
+    <details>
+      <summary>Do you teach online?</summary>
+      <div class="faq-body">Yes, on Zoom or Google Meet, at the same fee as a home lesson. Switching a lesson online is also the easiest way to avoid a late-cancellation charge.</div>
+    </details>
+    <details>
+      <summary>What do we need at home?</summary>
+      <div class="faq-body">A quiet table with good lighting, with the TV and phones off. For students under 18, a parent or another responsible adult should be at home during the lesson.</div>
+    </details>
+    <details>
+      <summary>Are notes and worksheets included?</summary>
+      <div class="faq-body">Yes. My notes, worksheets and practice papers are included in the fee, for your child&rsquo;s own use only.</div>
+    </details>
+    <details>
+      <summary>How will I know how my child is doing?</summary>
+      <div class="faq-body">I share a progress update after each school assessment. Sharing school papers and results helps me decide what to teach next. I won&rsquo;t promise a specific grade &mdash; results depend on your child&rsquo;s effort too &mdash; but I will always give you honest feedback.</div>
+    </details>
+    <details>
+      <summary>How do we pause or stop lessons?</summary>
+      <div class="faq-body">Either of us can stop or pause with two weeks&rsquo; notice. After that the weekly slot is released, so it may not be free if you come back later.</div>
+    </details>
+  </div>
+  <p class="faq-terms">Full details are in my <a href="terms.pdf" target="_blank" rel="noopener">lesson terms and conditions (PDF)</a>.</p>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
   <p class="section-label">Get In Touch</p>
   <h2 class="section-title">Ready to start?</h2>
   <div class="divider"></div>
   <p class="contact-sub">
-    Reach out via any of the channels below. I typically respond within 24 hours.
+    WhatsApp is the fastest way to reach me (12pm &ndash; 10pm daily). I reply within 24 hours.
   </p>
   <div class="contact-grid">
     <div class="contact-card">
-      <div class="contact-card-icon">📧</div>
+      <div class="contact-card-icon"><svg class="ico" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/></svg></div>
+      <div class="contact-card-label">WhatsApp</div>
+      <div class="contact-card-value">
+        <a href="https://wa.me/6591866928?text=Hi%20T-Leng%2C%20I%27m%20interested%20in%20tuition.%20Level%3A%20%20Subject%3A%20%20Area%3A%20" target="_blank" rel="noopener">+65 9186 6928</a>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-card-icon"><svg class="ico" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6l8.5 7 8.5-7"/></svg></div>
       <div class="contact-card-label">Email</div>
       <div class="contact-card-value">
         <a href="mailto:tlengengtuition@gmail.com">tlengengtuition@gmail.com</a>
       </div>
     </div>
     <div class="contact-card">
-      <div class="contact-card-icon">📱</div>
-      <div class="contact-card-label">Phone / WhatsApp</div>
-      <div class="contact-card-value">
-        <a href="tel:+6591866928">+65 9186 6928</a>
-      </div>
-    </div>
-    <div class="contact-card">
-      <div class="contact-card-icon">📍</div>
+      <div class="contact-card-icon"><svg class="ico" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div>
       <div class="contact-card-label">Based In</div>
       <div class="contact-card-value">Singapore</div>
     </div>
   </div>
-  <a href="mailto:tlengengtuition@gmail.com" class="btn-primary" style="display:inline-block;margin-top:1rem;">Send Me an Email</a>
+  <a href="https://wa.me/6591866928?text=Hi%20T-Leng%2C%20I%27m%20interested%20in%20tuition.%20Level%3A%20%20Subject%3A%20%20Area%3A%20" class="btn-primary btn-wa" target="_blank" rel="noopener" style="margin-top:1rem;background:var(--gold);color:var(--ink);"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4.3A8.5 8.5 0 1 1 8 19.3z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8c-1-.4-2.4-1.8-2.8-2.8l.8-1-1-2z"/></svg> WhatsApp Me</a>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 T-Leng · Private Tutor Singapore</p>
+  <p>&copy; 2026 T-Leng Tuition &middot; Singapore</p>
   <p>Free Maths practice: <a href="https://www.mugcornersg.com/?ref=tuition" style="color:inherit;">MugCorner</a></p>
-  <p>Designed with care ✦</p>
+  <p><a href="terms.pdf" target="_blank" rel="noopener" style="color:inherit;">Lesson terms (PDF)</a></p>
 </footer>
 
 <!-- FLOATING ENQUIRY WIDGET -->
@@ -1170,8 +1287,13 @@ document.addEventListener('DOMContentLoaded', function() {
 </style>
 
 <button class="enquiry-fab" onclick="openEnquiry()">
-  <span class="enquiry-fab-icon">&#x2709;&#xFE0F;</span> Enquire Now
+  <span class="enquiry-fab-icon" style="line-height:0"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6l8.5 7 8.5-7"/></svg></span> Enquire Now
 </button>
+
+<div class="mobile-cta" role="navigation" aria-label="Contact">
+  <a class="wa" href="https://wa.me/6591866928?text=Hi%20T-Leng%2C%20I%27m%20interested%20in%20tuition.%20Level%3A%20%20Subject%3A%20%20Area%3A%20" target="_blank" rel="noopener"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4.3A8.5 8.5 0 1 1 8 19.3z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8c-1-.4-2.4-1.8-2.8-2.8l.8-1-1-2z"/></svg> WhatsApp</a>
+  <button class="enq" type="button" onclick="openEnquiry()">Enquire</button>
+</div>
 
 <div class="enquiry-overlay" id="enquiryOverlay" onclick="closeEnquiry()"></div>
 
@@ -1196,17 +1318,17 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="form-group">
       <span class="field-label">Preferred Contact Method *</span>
       <div class="contact-toggle">
-        <button type="button" class="toggle-btn active" data-target="email-field" onclick="switchContact(this, 'email-field', 'phone-field')">📧 Email</button>
-        <button type="button" class="toggle-btn" data-target="phone-field" onclick="switchContact(this, 'phone-field', 'email-field')">📱 WhatsApp</button>
+        <button type="button" class="toggle-btn active" data-target="phone-field" onclick="switchContact(this, 'phone-field', 'email-field')">WhatsApp</button>
+        <button type="button" class="toggle-btn" data-target="email-field" onclick="switchContact(this, 'email-field', 'phone-field')">Email</button>
       </div>
     </div>
-    <div class="form-group" id="email-field">
-      <label for="femail">Email Address *</label>
-      <input type="email" id="femail" name="email" placeholder="you@example.com" required />
-    </div>
-    <div class="form-group" id="phone-field" style="display:none;">
+    <div class="form-group" id="phone-field">
       <label for="fphone">WhatsApp Number *</label>
-      <input type="tel" id="fphone" name="whatsapp" placeholder="+65 9XXX XXXX" />
+      <input type="tel" id="fphone" name="whatsapp" placeholder="+65 9XXX XXXX" required />
+    </div>
+    <div class="form-group" id="email-field" style="display:none;">
+      <label for="femail">Email Address *</label>
+      <input type="email" id="femail" name="email" placeholder="you@example.com" />
     </div>
 
     <div class="form-divider"></div>
@@ -1217,7 +1339,8 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="checkbox-group">
         <label class="checkbox-item"><input type="checkbox" name="subject" value="Mathematics" /> Mathematics</label>
         <label class="checkbox-item"><input type="checkbox" name="subject" value="Science" /> Science</label>
-        <label class="checkbox-item"><input type="checkbox" name="subject" value="Python Programming" /> Python</label>
+        <label class="checkbox-item"><input type="checkbox" name="subject" value="English" /> English</label>
+        <label class="checkbox-item"><input type="checkbox" name="subject" value="Python / H2 Computing" /> Computing</label>
         <label class="checkbox-item"><input type="checkbox" name="subject" value="Other" /> Other</label>
       </div>
     </div>
@@ -1228,8 +1351,13 @@ document.addEventListener('DOMContentLoaded', function() {
         <option>Primary School (P1–P6)</option>
         <option>Lower Secondary (Sec 1–2)</option>
         <option>Upper Secondary (Sec 3–4)</option>
+        <option>JC (H1 / H2)</option>
         <option>IB / IP / IGCSE</option>
       </select>
+    </div>
+    <div class="form-group">
+      <label for="fstream">Stream / Exam</label>
+      <input type="text" id="fstream" name="stream" placeholder="e.g. Sec 3 G3, A-Math · PSLE 2027 · JC1 H2" />
     </div>
 
     <div class="form-divider"></div>
@@ -1268,10 +1396,10 @@ document.addEventListener('DOMContentLoaded', function() {
       <label for="ftime">Preferred Time Slot *</label>
       <select id="ftime" name="time_slot" required>
         <option value="" disabled selected>Select time</option>
-        <option>Morning (9am – 12pm)</option>
+        <option>Morning (10am – 12pm)</option>
         <option>Afternoon (12pm – 4pm)</option>
         <option>Evening (4pm – 7pm)</option>
-        <option>Night (7pm – 9pm)</option>
+        <option>Night (7pm – 10pm)</option>
         <option>Flexible</option>
       </select>
     </div>
@@ -1292,9 +1420,9 @@ document.addEventListener('DOMContentLoaded', function() {
   </form>
 
   <div class="enquiry-success" id="enquirySuccess">
-    <div class="enquiry-success-icon">&#x2705;</div>
+    <div class="enquiry-success-icon" style="color:var(--gold-deep);line-height:0"><svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M7.5 12.5l3 3 6-6.5"/></svg></div>
     <h3>Enquiry Received!</h3>
-    <p>Thank you for reaching out. T-Leng will be in touch within 24 hours via email or WhatsApp.</p>
+    <p>Thank you for reaching out. I&rsquo;ll be in touch within 24 hours by WhatsApp or email.</p>
   </div>
 </div>
 
@@ -1304,9 +1432,30 @@ document.addEventListener('DOMContentLoaded', function() {
   var SUPA_URL = 'https://rnjvswkejbrhbaytutai.supabase.co';
   var SUPA_KEY = 'sb_publishable_IKUtlGhnwJT0Hld5A8cglw_0iF6Y5J9';
   var GRID_START = 10; var PX_PER_HR = 64;
+  var WA = 'https://wa.me/6591866928?text=Hi%20T-Leng%2C%20I%27m%20interested%20in%20tuition.%20Level%3A%20%20Subject%3A%20%20Area%3A%20';
   function toMins(t) { var p=(t||'0:0').split(':'); return (+p[0]||0)*60+(+p[1]||0); }
   function fmt12(t) { var p=(t||'0:00').split(':'),h=+p[0],m=p[1]||'00'; return (h%12||12)+':'+m+(h<12?'AM':'PM'); }
   function pos(s,e) { var gm=GRID_START*60; return {top:Math.max(0,(toMins(s)-gm)/60*PX_PER_HR),height:Math.max(20,(toMins(e)-toMins(s))/60*PX_PER_HR)}; }
+  var DAYS=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+  var OPEN=10*60, CLOSE=22*60, MIN_FREE=90;   // lesson window 10am-10pm; show gaps of 1.5h+
+  function hm(m){var h=Math.floor(m/60),mm=m%60;return (h%12||12)+(mm?':'+(mm<10?'0':'')+mm:'')+(h<12?'am':'pm');}
+  function freeList(day){
+    var b=day.map(function(s){return [toMins(s.start_time),toMins(s.end_time)];}).sort(function(a,c){return a[0]-c[0];});
+    var out=[],cur=OPEN;
+    b.forEach(function(x){ if(x[0]-cur>=MIN_FREE) out.push([cur,x[0]]); cur=Math.max(cur,x[1]); });
+    if(CLOSE-cur>=MIN_FREE) out.push([cur,CLOSE]);
+    return out;
+  }
+  function renderOpen(byDay){
+    var html=byDay.map(function(day,i){
+      var f=freeList(day);
+      return '<div class="slot-day'+(f.length?'':' full')+'"><b>'+DAYS[i]+'</b><span>'+
+        (f.length?f.map(function(x){return hm(x[0])+' &ndash; '+hm(x[1]);}).join('<br>'):'Fully booked')+'</span></div>';
+    }).join('');
+    document.getElementById('slot-days').innerHTML=html;
+    document.getElementById('open-slots').hidden=false;
+    document.getElementById('tt-status').style.display='none';
+  }
   function render(slots) {
     var byDay=[[],[],[],[],[],[],[]];
     (slots||[]).forEach(function(s){if(s.weekday>=0&&s.weekday<=6)byDay[s.weekday].push(s);});
@@ -1315,6 +1464,13 @@ document.addEventListener('DOMContentLoaded', function() {
         return '<div class="schedule-event" style="top:'+p.top+'px;height:'+p.height+'px"><span class="event-time">'+fmt12(s.start_time)+'–'+fmt12(s.end_time)+'</span><span class="event-text">Taken</span></div>';
       }).join('');
     });
+    renderOpen(byDay);
+  }
+  function fail(){
+    var st=document.getElementById('tt-status');
+    st.innerHTML='Live availability couldn&rsquo;t load just now. <a href="'+WA+'" target="_blank" rel="noopener">WhatsApp me</a> and I&rsquo;ll tell you which slots are open.';
+    var w=document.querySelector('.timetable-wrap'),l=document.querySelector('#timetable .legend');
+    if(w)w.style.display='none'; if(l)l.style.display='none';
   }
   document.addEventListener('DOMContentLoaded',function(){
     fetch(SUPA_URL+'/rest/v1/rpc/public_schedule',{
@@ -1324,7 +1480,7 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
     .then(render)
-    .catch(function(err){console.warn('[T-Leng timetable]',err.message);});
+    .catch(function(err){console.warn('[T-Leng timetable]',err.message);fail();});
   });
 })();
 </script>
