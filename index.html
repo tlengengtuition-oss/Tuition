@@ -220,7 +220,14 @@
    "image": "https://tlengtuition.com/profile.png",
    "url": "https://tlengtuition.com/",
    "sameAs": [
-    "https://www.mugcornersg.com/"
+    "https://www.mugcornersg.com/",
+    "https://www.tutordeck.com.sg/"
+   ],
+   "knowsAbout": [
+    "Mathematics education",
+    "Physics",
+    "H2 Computing",
+    "Software development"
    ]
   },
   {
@@ -231,6 +238,26 @@
    "inLanguage": "en-SG",
    "publisher": {
     "@id": "https://tlengtuition.com/#business"
+   }
+  },
+  {
+   "@type": "SoftwareApplication",
+   "@id": "https://www.tutordeck.com.sg/#app",
+   "name": "TutorDeck",
+   "url": "https://www.tutordeck.com.sg/",
+   "applicationCategory": "BusinessApplication",
+   "operatingSystem": "Web",
+   "description": "Tuition management web app for tutors: scheduling, lessons, invoices and progress records.",
+   "creator": {
+    "@id": "https://tlengtuition.com/#tleng"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "TutorDeck",
+    "url": "https://www.tutordeck.com.sg/",
+    "founder": {
+     "@id": "https://tlengtuition.com/#tleng"
+    }
    }
   },
   {
@@ -1137,6 +1164,9 @@ document.addEventListener('DOMContentLoaded', function() {
       I teach <strong>Maths</strong> from Primary (PSLE) through Secondary (G1, G2 and G3, E-Math and A-Math) to JC H2 Maths, <strong>Science</strong> for Primary and Lower Secondary plus Upper Secondary <strong>Physics</strong>, and <strong>Python and H2 Computing</strong>. Lessons are at your home anywhere in Singapore, or online.
     </p>
     <p>
+      I&rsquo;m also the founder of <a href="https://www.tutordeck.com.sg/?ref=tlengtuition" style="color:var(--gold-text);font-weight:500">TutorDeck</a>, a web app that helps tutors manage their schedules, lessons and invoices. I use it to run my own tuition, so lessons, billing and progress records stay organised, and it powers the live availability on this page.
+    </p>
+    <p>
       Whether you need intensive exam preparation, consistent weekly support, or help building a stronger foundation, I'm here to help every step of the way.
     </p>
   </div>
@@ -1157,6 +1187,10 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="qual-card-label">Location</div>
       <div class="qual-card-value">Singapore<br><small style="font-size:0.8rem;color:var(--muted)">In-person & Online</small></div>
     </div>
+    <a class="qual-card" href="https://www.tutordeck.com.sg/?ref=tlengtuition" style="grid-column:1 / -1;text-decoration:none;display:block">
+      <div class="qual-card-label">Founder</div>
+      <div class="qual-card-value">TutorDeck &rarr;<br><small style="font-size:0.8rem;color:var(--muted)">Scheduling, lesson and invoice management for tutors &middot; tutordeck.com.sg</small></div>
+    </a>
   </div>
 </section>
 
@@ -1230,7 +1264,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <p class="section-label">Availability</p>
   <h2 class="section-title">Weekly availability</h2>
   <div class="divider"></div>
-  <p class="timetable-note">Live from my booking system, so it updates as soon as a slot is taken. Lessons run 10am – 10pm daily.</p>
+  <p class="timetable-note">Live from <a href="https://www.tutordeck.com.sg/?ref=tlengtuition-timetable" style="color:var(--gold-text)">TutorDeck</a>, the tuition app I built, so it updates as soon as a slot is taken. Lessons run 10am – 10pm daily.</p>
   <div id="tt-status" class="tt-status">Loading this week&rsquo;s availability&hellip;</div>
   <div class="open-slots" id="open-slots" hidden>
     <h3>Open slots</h3>
@@ -1471,7 +1505,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- FOOTER -->
 <footer>
   <p>&copy; 2026 T-Leng Tuition &middot; Singapore</p>
-  <p>Free Maths practice: <a href="https://www.mugcornersg.com/?ref=tuition" style="color:inherit;">MugCorner</a></p>
+  <p>Free Maths practice: <a href="https://www.mugcornersg.com/?ref=tuition" style="color:inherit;">MugCorner</a> &middot; Runs on <a href="https://www.tutordeck.com.sg/?ref=tlengtuition-footer" style="color:inherit;">TutorDeck</a></p>
   <p><a href="https://share.google/Mp7RmO8o6dmYv6A1m" target="_blank" rel="noopener" style="color:inherit;">Google</a> &middot; <a href="terms.pdf" target="_blank" rel="noopener" style="color:inherit;">Lesson terms (PDF)</a></p>
 </footer>
 
