@@ -785,24 +785,28 @@
     #contact .divider { margin: 0 auto 2rem; }
     .contact-sub {
       font-size: 1rem; color: rgba(255,255,255,0.72);
-      max-width: 520px; margin: 0 auto 3rem;
+      max-width: 560px; margin: 0 auto 3rem;
       line-height: 1.7;
     }
     .contact-grid {
-      display: flex; justify-content: center; gap: 2rem;
-      flex-wrap: wrap; margin-bottom: 3rem;
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
+      max-width: 68rem; margin: 0 auto 2.5rem;
     }
     .contact-card {
+      flex: 1 1 11.5rem;
+      display: block; text-decoration: none; color: inherit;
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.1);
-      padding: 2rem 2.5rem;
-      min-width: 200px;
-      transition: border-color 0.25s, background 0.25s;
+      padding: 1.7rem 1.1rem;
+      transition: border-color 0.25s, background 0.25s, transform 0.2s;
     }
     .contact-card:hover {
       border-color: var(--gold);
       background: rgba(201,168,76,0.06);
+      transform: translateY(-2px);
     }
+    .contact-card.is-primary { border-color: var(--gold); background: rgba(201,168,76,0.1); }
+    .contact-card.email { flex-basis: 16rem; }
     .contact-card-icon { color: var(--gold); margin-bottom: 0.8rem; line-height: 0; }
     .contact-card-label {
       font-size: 0.65rem; font-weight: 500;
@@ -810,12 +814,9 @@
       color: var(--gold); margin-bottom: 0.4rem;
     }
     .contact-card-value {
-      font-size: 0.95rem; color: rgba(255,255,255,0.8);
+      font-size: 0.95rem; color: rgba(255,255,255,0.88); overflow-wrap: anywhere;
     }
-    .contact-card a {
-      color: inherit; text-decoration: none;
-    }
-    .contact-card a:hover { color: var(--gold-lt); }
+    .contact-card-hint { font-size: 0.76rem; color: rgba(255,255,255,0.65); margin-top: 0.4rem; line-height: 1.5; }
 
     /* ── FOOTER ── */
     footer {
@@ -851,6 +852,15 @@
     .slot-day b { display: block; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-text); margin-bottom: 0.25rem; }
     .slot-day span { font-size: 0.92rem; color: var(--ink); line-height: 1.6; }
     .slot-day.full span { color: var(--muted); font-style: italic; }
+    .slot-hint { font-size: 0.86rem; color: var(--muted); margin: -0.5rem 0 0.9rem; }
+    .slot-day span.slot-list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .slot-pick { min-height: 36px; padding: 0.3rem 0.7rem; background: var(--warm); color: var(--ink); border: 1px solid var(--border);
+      font-family: 'DM Sans', sans-serif; font-size: 0.88rem; cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s; }
+    .slot-pick::after { content: ' \2192'; color: var(--gold-text); }
+    .slot-pick:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+    .slot-pick:hover::after { color: var(--gold); }
+    .quote-actions { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 0.9rem; }
+    .quote-actions a { padding: 0.75rem 1.3rem; font-size: 0.74rem; }
     .tt-status { font-size: 0.92rem; color: var(--ink); background: white; border-left: 3px solid var(--gold); padding: 0.9rem 1.1rem; margin-bottom: 1.4rem; }
     .tt-status a { color: var(--gold-text); font-weight: 500; }
     #faq { background: var(--warm); }
@@ -967,7 +977,9 @@
     section { padding: 3.5rem 1.2rem; }
     #about, #rates { grid-template-columns: 1fr; gap: 2.5rem; }
     .subjects-grid, .testimonials-grid { grid-template-columns: 1fr !important; }
-    .contact-card { padding: 1.5rem; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+    .contact-card { padding: 1.3rem 0.9rem; }
+    .contact-card.wide { grid-column: 1 / -1; }
     .stat-bubble { padding: 0.6rem 0.9rem; z-index: 5; }
     .stat-bubble.left { left: -8px; bottom: 48px; }
     .hero-cta a { flex: 1 1 auto; justify-content: center; text-align: center; }
@@ -979,77 +991,6 @@
   }
   </style>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Enquiry panel
-  function openEnquiry() {
-    document.getElementById('enquiryPanel').classList.add('open');
-    document.getElementById('enquiryOverlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeEnquiry() {
-    document.getElementById('enquiryPanel').classList.remove('open');
-    document.getElementById('enquiryOverlay').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  window.openEnquiry = openEnquiry;
-  window.closeEnquiry = closeEnquiry;
-
-  // Contact toggle (email / whatsapp)
-  window.switchContact = function(btn, showId, hideId) {
-    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    var showEl = document.getElementById(showId);
-    var hideEl = document.getElementById(hideId);
-    showEl.style.display = 'flex';
-    hideEl.style.display = 'none';
-    showEl.querySelector('input').required = true;
-    hideEl.querySelector('input').required = false;
-  };
-
-  // Hide location field when Online is selected
-  var modeEl = document.getElementById('fmode');
-  if (modeEl) {
-    modeEl.addEventListener('change', function() {
-      var loc = document.getElementById('location-field');
-      if (loc) loc.style.display = this.value === 'Online (Zoom)' ? 'none' : 'flex';
-    });
-  }
-
-  // Form submission via Formspree
-  var form = document.getElementById('enquiryForm');
-  if (form) {
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      var btn = form.querySelector('.enquiry-submit');
-      btn.textContent = 'Sending...';
-      btn.disabled = true;
-      try {
-        // Copy sender email into _replyto so T-Leng can reply directly
-        var emailVal = (document.getElementById('femail') || {}).value || '';
-        var replyTo = document.getElementById('f_replyto');
-        if (replyTo && emailVal) replyTo.value = emailVal;
-
-        var res = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        });
-        if (res.ok) {
-          form.style.display = 'none';
-          document.getElementById('enquirySuccess').classList.add('show');
-        } else {
-          btn.textContent = 'Something went wrong — try again';
-          btn.disabled = false;
-        }
-      } catch(err) {
-        btn.textContent = 'Something went wrong — try again';
-        btn.disabled = false;
-      }
-    });
-  }
-});
-</script>
 </head>
 <body>
 
@@ -1112,7 +1053,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <span class="tag">IB · IP · IGCSE</span>
     </div>
     <div class="hero-cta">
-      <a href="https://wa.me/6591866928?text=Hi%20T-Leng%2C%20I%27m%20interested%20in%20tuition.%20Level%3A%20%20Subject%3A%20%20Area%3A%20" class="btn-primary btn-wa" target="_blank" rel="noopener"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4.3A8.5 8.5 0 1 1 8 19.3z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8c-1-.4-2.4-1.8-2.8-2.8l.8-1-1-2z"/></svg> WhatsApp Me</a>
+      <a href="https://wa.me/6591866928?text=Hi%20T-Leng%2C%20I%27m%20interested%20in%20tuition.%20Level%3A%20%20Subject%3A%20%20Area%3A%20" data-channel="wa" class="btn-primary btn-wa" target="_blank" rel="noopener"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4.3A8.5 8.5 0 1 1 8 19.3z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8c-1-.4-2.4-1.8-2.8-2.8l.8-1-1-2z"/></svg> WhatsApp Me</a>
       <a href="#timetable" class="btn-outline">See Open Slots</a>
     </div>
     <p class="hero-mc">Free for every student: Maths notes, worksheets &amp; exam papers on <a href="https://www.mugcornersg.com/?ref=tuition-hero">MugCorner</a></p>
@@ -1268,6 +1209,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <div id="tt-status" class="tt-status">Loading this week&rsquo;s availability&hellip;</div>
   <div class="open-slots" id="open-slots" hidden>
     <h3>Open slots</h3>
+    <p class="slot-hint">Tap a time to ask about it by WhatsApp, text, email or a call.</p>
     <div class="slot-days" id="slot-days"></div>
   </div>
   <div class="timetable-wrap">
@@ -1318,7 +1260,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <p class="section-label">Pricing</p>
     <h2 class="section-title">Home tuition rates</h2>
     <div class="divider"></div>
-    <p class="rates-note">Your rate within each range depends on the level and your location (travel distance to your home). WhatsApp me your area and your child&rsquo;s level for an exact quote.</p>
+    <p class="rates-note">Your rate within each range depends on the level and your location (travel distance to your home). Send me your area and your child&rsquo;s level for an exact quote.</p>
     <div class="rates-grid">
       <div class="rate-row">
         <div>
@@ -1364,6 +1306,26 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 
   <div class="info-blocks">
+    <div class="info-block">
+      <div class="info-block-title">Included in the fee</div>
+      <p>My notes, worksheets and practice papers, and a progress update after each school assessment.</p>
+    </div>
+    <div class="info-block">
+      <div class="info-block-title">Online lessons</div>
+      <p>On Zoom or Google Meet, at the same fee as a home lesson.</p>
+    </div>
+    <div class="info-block">
+      <div class="info-block-title">Billing</div>
+      <p>Billed monthly after the month&rsquo;s lessons, payable by PayNow within a week.</p>
+    </div>
+    <div class="info-block" style="border-left-color:var(--gold)">
+      <div class="info-block-title">Get an exact quote</div>
+      <p>Tell me your area and your child&rsquo;s level. No form to fill in.</p>
+      <div class="quote-actions">
+        <a class="btn-primary btn-wa" data-channel="wa" href="https://wa.me/6591866928?text=Hi%20T-Leng%2C%20I%27m%20interested%20in%20tuition.%20Level%3A%20%20Subject%3A%20%20Area%3A%20" target="_blank" rel="noopener"><svg class="ic" width="18" height="18" aria-hidden="true"><use href="#i-wa"/></svg> WhatsApp</a>
+        <a class="btn-outline" href="#contact" data-open-contact>Call, text or email</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1476,30 +1438,41 @@ document.addEventListener('DOMContentLoaded', function() {
   <h2 class="section-title">Ready to start?</h2>
   <div class="divider"></div>
   <p class="contact-sub">
-    WhatsApp is the fastest way to reach me (12pm &ndash; 10pm daily). I reply within 24 hours.
+    No form to fill in. Pick whichever is easiest for you. WhatsApp is the fastest (12pm &ndash; 10pm daily), and I reply within 24 hours.
   </p>
   <div class="contact-grid">
-    <div class="contact-card">
-      <div class="contact-card-icon"><svg class="ico" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/></svg></div>
+    <a class="contact-card is-primary wide" data-channel="wa" href="https://wa.me/6591866928?text=Hi%20T-Leng%2C%20I%27m%20interested%20in%20tuition.%20Level%3A%20%20Subject%3A%20%20Area%3A%20" target="_blank" rel="noopener">
+      <div class="contact-card-icon"><svg class="ic" width="26" height="26" aria-hidden="true"><use href="#i-wa"/></svg></div>
       <div class="contact-card-label">WhatsApp</div>
-      <div class="contact-card-value">
-        <a href="https://wa.me/6591866928?text=Hi%20T-Leng%2C%20I%27m%20interested%20in%20tuition.%20Level%3A%20%20Subject%3A%20%20Area%3A%20" target="_blank" rel="noopener">+65 9186 6928</a>
-      </div>
-    </div>
-    <div class="contact-card">
-      <div class="contact-card-icon"><svg class="ico" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6l8.5 7 8.5-7"/></svg></div>
+      <div class="contact-card-value">+65 9186 6928</div>
+      <div class="contact-card-hint">Fastest &middot; message ready to send</div>
+    </a>
+    <a class="contact-card" href="tel:+6591866928">
+      <div class="contact-card-icon"><svg class="ic" width="26" height="26" aria-hidden="true"><use href="#i-call"/></svg></div>
+      <div class="contact-card-label">Call</div>
+      <div class="contact-card-value">+65 9186 6928</div>
+      <div class="contact-card-hint">12pm &ndash; 10pm daily</div>
+    </a>
+    <a class="contact-card" data-channel="sms" href="sms:+6591866928">
+      <div class="contact-card-icon"><svg class="ic" width="26" height="26" aria-hidden="true"><use href="#i-sms"/></svg></div>
+      <div class="contact-card-label">Text (SMS)</div>
+      <div class="contact-card-value">+65 9186 6928</div>
+      <div class="contact-card-hint">No WhatsApp needed</div>
+    </a>
+    <a class="contact-card email wide" data-channel="mail" href="mailto:tlengengtuition@gmail.com?subject=Tuition%20enquiry">
+      <div class="contact-card-icon"><svg class="ic" width="26" height="26" aria-hidden="true"><use href="#i-mail"/></svg></div>
       <div class="contact-card-label">Email</div>
-      <div class="contact-card-value">
-        <a href="mailto:tlengengtuition@gmail.com">tlengengtuition@gmail.com</a>
-      </div>
-    </div>
-    <div class="contact-card">
-      <div class="contact-card-icon"><svg class="ico" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div>
+      <div class="contact-card-value">tlengengtuition@gmail.com</div>
+      <div class="contact-card-hint">Good for longer questions</div>
+    </a>
+    <a class="contact-card wide" href="https://share.google/Mp7RmO8o6dmYv6A1m" target="_blank" rel="noopener">
+      <div class="contact-card-icon"><svg class="ic" width="26" height="26" aria-hidden="true"><use href="#i-pin"/></svg></div>
       <div class="contact-card-label">Google</div>
-      <div class="contact-card-value"><a href="https://share.google/Mp7RmO8o6dmYv6A1m" target="_blank" rel="noopener">T-Leng Tuition</a></div>
-    </div>
+      <div class="contact-card-value">T-Leng Tuition</div>
+      <div class="contact-card-hint">Profile &amp; reviews</div>
+    </a>
   </div>
-  <a href="https://wa.me/6591866928?text=Hi%20T-Leng%2C%20I%27m%20interested%20in%20tuition.%20Level%3A%20%20Subject%3A%20%20Area%3A%20" class="btn-primary btn-wa" target="_blank" rel="noopener" style="margin-top:1rem;background:var(--gold);color:var(--ink);"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4.3A8.5 8.5 0 1 1 8 19.3z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8c-1-.4-2.4-1.8-2.8-2.8l.8-1-1-2z"/></svg> WhatsApp Me</a>
+  <a href="#contact" data-open-contact class="btn-primary" style="display:inline-block;background:var(--gold);color:var(--ink);">Quick enquiry &middot; 3 taps, no typing</a>
 </section>
 
 <!-- FOOTER -->
@@ -1509,8 +1482,9 @@ document.addEventListener('DOMContentLoaded', function() {
   <p><a href="https://share.google/Mp7RmO8o6dmYv6A1m" target="_blank" rel="noopener" style="color:inherit;">Google</a> &middot; <a href="terms.pdf" target="_blank" rel="noopener" style="color:inherit;">Lesson terms (PDF)</a></p>
 </footer>
 
-<!-- FLOATING ENQUIRY WIDGET -->
+<!-- CONTACT PANEL: tap-to-build message, then pick a channel (no form) -->
 <style>
+  .ic { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
   .enquiry-fab {
     position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
     display: flex; align-items: center; gap: 0.6rem;
@@ -1518,13 +1492,12 @@ document.addEventListener('DOMContentLoaded', function() {
     background: var(--gold); color: var(--ink);
     font-family: 'DM Sans', sans-serif;
     font-size: 0.8rem; font-weight: 600;
-    letter-spacing: 0.08em; text-transform: uppercase;
+    letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
     border: none; cursor: pointer;
     box-shadow: 0 6px 24px rgba(201,168,76,0.45);
     transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
   }
   .enquiry-fab:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(201,168,76,0.55); background: #b8932e; }
-  .enquiry-fab-icon { font-size: 1.1rem; }
   .enquiry-overlay {
     position: fixed; inset: 0; z-index: 1000;
     background: rgba(26,26,46,0.5); backdrop-filter: blur(4px);
@@ -1535,209 +1508,264 @@ document.addEventListener('DOMContentLoaded', function() {
     position: fixed; top: 0; right: 0; bottom: 0; z-index: 1001;
     width: 420px; max-width: 100vw;
     background: var(--warm);
-    transform: translateX(100%);
-    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    transform: translateX(100%); visibility: hidden;
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), visibility 0s 0.35s;
     display: flex; flex-direction: column;
-    box-shadow: -8px 0 40px rgba(0,0,0,0.15);
-    overflow-y: auto;
+    overflow-y: auto; overscroll-behavior: contain;
   }
-  .enquiry-panel.open { transform: translateX(0); }
+  .enquiry-panel.open { transform: translateX(0); visibility: visible; box-shadow: -8px 0 40px rgba(0,0,0,0.15);
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), visibility 0s; }
   .enquiry-panel-header {
-    padding: 2rem 2rem 1.2rem;
-    border-bottom: 1px solid var(--border);
-    display: flex; justify-content: space-between; align-items: flex-start;
+    padding: 1.6rem 1.6rem 1.2rem;
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;
     background: var(--ink); color: var(--cream); flex-shrink: 0;
   }
-  .enquiry-panel-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; line-height: 1.2; }
-  .enquiry-panel-subtitle { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 0.3rem; letter-spacing: 0.04em; }
-  .enquiry-close { background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.5); font-size: 1.4rem; line-height: 1; padding: 0.2rem; transition: color 0.2s; }
+  .enquiry-panel-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; line-height: 1.2; }
+  .enquiry-panel-subtitle { font-size: 0.82rem; color: rgba(255,255,255,0.75); margin-top: 0.35rem; line-height: 1.5; }
+  .enquiry-close { background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.75); font-size: 1.3rem; line-height: 1;
+    width: 40px; height: 40px; margin: -0.5rem -0.6rem 0 0; flex-shrink: 0; transition: color 0.2s; }
   .enquiry-close:hover { color: var(--gold); }
-  .enquiry-form { padding: 1.8rem 2rem 2rem; display: flex; flex-direction: column; gap: 1.2rem; flex: 1; }
-  .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
-  .form-group > label,
-  .form-group > .field-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
-  .form-group > input, .form-group > select, .form-group > textarea {
-    padding: 0.75rem 1rem; border: 1px solid var(--border); background: white;
-    font-family: 'DM Sans', sans-serif; font-size: 0.88rem; color: var(--ink);
-    outline: none; transition: border-color 0.2s; appearance: none; -webkit-appearance: none;
-  }
-  .form-group > input:focus, .form-group > select:focus, .form-group > textarea:focus { border-color: var(--gold); }
-  .form-group > textarea { resize: vertical; min-height: 80px; }
-  .form-group > select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a7060' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem;
-  }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .checkbox-group { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.2rem; }
-  .checkbox-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--ink); cursor: pointer; }
-  .checkbox-item input[type="checkbox"] { width: 16px; height: 16px; padding: 0; accent-color: var(--gold); cursor: pointer; flex-shrink: 0; }
-  .form-divider { height: 1px; background: var(--border); margin: 0.2rem 0; }
-  .enquiry-submit {
-    width: 100%; padding: 1rem; background: var(--ink); color: var(--cream);
-    font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 600;
-    letter-spacing: 0.12em; text-transform: uppercase; border: none; cursor: pointer;
-    transition: background 0.25s; margin-top: 0.4rem;
-  }
-  .enquiry-submit:hover { background: var(--gold); color: var(--ink); }
-  .enquiry-success { display: none; flex-direction: column; align-items: center; justify-content: center; padding: 3rem 2rem; text-align: center; flex: 1; }
-  .enquiry-success.show { display: flex; }
-  .enquiry-success-icon { font-size: 3rem; margin-bottom: 1rem; }
-  .enquiry-success h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; color: var(--ink); margin-bottom: 0.6rem; }
-  .enquiry-success p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
-  .contact-toggle { display: flex; gap: 0.5rem; }
-  .toggle-btn {
-    flex: 1; padding: 0.6rem 1rem;
-    font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 500;
-    border: 1px solid var(--border); background: white; color: var(--muted);
-    cursor: pointer; transition: all 0.2s; letter-spacing: 0.04em;
-  }
-  .toggle-btn.active { background: var(--ink); color: var(--cream); border-color: var(--ink); }
-  .toggle-btn:hover:not(.active) { border-color: var(--gold); color: var(--gold); }
+  .cp-body { padding: 1.4rem 1.6rem 2rem; display: flex; flex-direction: column; gap: 1.1rem; }
+  .cp-step { display: flex; align-items: center; gap: 0.6rem; font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; color: var(--ink); }
+  .cp-step small { font-family: 'DM Sans', sans-serif; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .cp-num { width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--gold); color: var(--ink);
+    display: inline-flex; align-items: center; justify-content: center; font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 600; }
+  .cp-label { display: block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.45rem; }
+  .cp-chips { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+  .cp-chip { min-height: 40px; padding: 0.45rem 0.9rem; background: white; color: var(--ink); border: 1px solid var(--border);
+    font-family: 'DM Sans', sans-serif; font-size: 0.85rem; cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s; }
+  .cp-chip:hover { border-color: var(--gold); }
+  .cp-chip[aria-pressed="true"] { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+  .cp-slot { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; background: white;
+    border-left: 3px solid var(--gold); padding: 0.55rem 0.6rem 0.55rem 0.9rem; font-size: 0.88rem; }
+  .cp-slot[hidden], .cp-copy[hidden] { display: none; }
+  .cp-slot button { background: none; border: none; cursor: pointer; color: var(--muted); font-size: 1rem; width: 36px; height: 36px; flex-shrink: 0; }
+  .cp-preview { background: white; border: 1px dashed var(--border); padding: 0.8rem 1rem; }
+  .cp-preview p { font-size: 0.86rem; line-height: 1.6; color: #3a3628; white-space: pre-line; }
+  .cp-preview small { display: block; margin-top: 0.5rem; font-size: 0.74rem; color: var(--muted); }
+  .cp-rule { height: 1px; background: var(--border); }
+  .cp-channels { display: flex; flex-direction: column; gap: 0.6rem; }
+  .cp-channel { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 0.9rem; padding: 0.9rem 1rem;
+    background: white; color: var(--ink); border-left: 3px solid var(--gold-lt); text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s; }
+  .cp-channel:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0,0,0,0.07); border-left-color: var(--gold); }
+  .cp-channel .ic { color: var(--gold-deep); }
+  .cp-channel b { display: block; font-size: 0.95rem; font-weight: 500; }
+  .cp-channel small { display: block; font-size: 0.76rem; color: var(--muted); margin-top: 0.1rem; overflow-wrap: anywhere; }
+  .cp-channel .go { color: var(--gold-text); font-size: 1rem; }
+  .cp-channel.is-primary { background: var(--ink); color: var(--cream); border-left-color: var(--gold); }
+  .cp-channel.is-primary .ic, .cp-channel.is-primary .go { color: var(--gold); }
+  .cp-channel.is-primary small { color: rgba(255,255,255,0.75); }
+  .cp-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem; font-size: 0.86rem; color: var(--muted); }
+  .cp-foot a { color: var(--gold-text); font-weight: 500; }
+  .cp-copy { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 36px; padding: 0.3rem 0.7rem; background: none;
+    border: 1px solid var(--border); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 0.8rem; cursor: pointer; }
+  .cp-copy:hover { border-color: var(--gold); }
+  .enquiry-fab:focus-visible, .enquiry-close:focus-visible, .cp-chip:focus-visible, .cp-channel:focus-visible,
+  .cp-copy:focus-visible, .cp-slot button:focus-visible, .slot-pick:focus-visible, .contact-card:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
   @media (max-width: 760px) {
-    .enquiry-fab { bottom: 1rem; right: 1rem; }
-    .form-row { grid-template-columns: 1fr; }
-    .checkbox-group { grid-template-columns: repeat(2, 1fr) !important; }
+    .cp-body { padding: 1.2rem 1.2rem 2rem; }
+    .enquiry-panel-header { padding: 1.3rem 1.2rem 1rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .enquiry-panel, .enquiry-panel.open, .enquiry-overlay { transition: none; }
   }
 </style>
 
-<button class="enquiry-fab" onclick="openEnquiry()">
-  <span class="enquiry-fab-icon" style="line-height:0"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6l8.5 7 8.5-7"/></svg></span> Enquire Now
-</button>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M3.5 20.5l1.3-4.3A8.5 8.5 0 1 1 8 19.3z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8c-1-.4-2.4-1.8-2.8-2.8l.8-1-1-2z"/></symbol>
+  <symbol id="i-call" viewBox="0 0 24 24"><path d="M6 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4 5.7 2 2 0 0 1 6 3.5z"/></symbol>
+  <symbol id="i-sms" viewBox="0 0 24 24"><path d="M4 4.5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-9l-4.5 3.5v-3.5H4a1 1 0 0 1-1-1v-10a1 1 0 0 1 1-1z"/><path d="M7.5 9h9M7.5 12.5h5.5"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6l8.5 7 8.5-7"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11" height="11" rx="1.5"/><path d="M5.5 15.5h-1a1 1 0 0 1-1-1v-10a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></symbol>
+</svg>
+
+<a class="enquiry-fab" href="#contact" data-open-contact>
+  <svg class="ic" width="18" height="18" aria-hidden="true"><use href="#i-sms"/></svg> Contact me
+</a>
 
 <div class="mobile-cta" role="navigation" aria-label="Contact">
-  <a class="wa" href="https://wa.me/6591866928?text=Hi%20T-Leng%2C%20I%27m%20interested%20in%20tuition.%20Level%3A%20%20Subject%3A%20%20Area%3A%20" target="_blank" rel="noopener"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4.3A8.5 8.5 0 1 1 8 19.3z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8c-1-.4-2.4-1.8-2.8-2.8l.8-1-1-2z"/></svg> WhatsApp</a>
-  <button class="enq" type="button" onclick="openEnquiry()">Enquire</button>
+  <a class="wa" data-channel="wa" href="https://wa.me/6591866928?text=Hi%20T-Leng%2C%20I%27m%20interested%20in%20tuition.%20Level%3A%20%20Subject%3A%20%20Area%3A%20" target="_blank" rel="noopener"><svg class="ic" width="18" height="18" aria-hidden="true"><use href="#i-wa"/></svg> WhatsApp</a>
+  <a class="enq" href="#contact" data-open-contact>More ways</a>
 </div>
 
-<div class="enquiry-overlay" id="enquiryOverlay" onclick="closeEnquiry()"></div>
+<div class="enquiry-overlay" id="contactOverlay" data-close-contact></div>
 
-<div class="enquiry-panel" id="enquiryPanel">
+<div class="enquiry-panel" id="contactPanel" role="dialog" aria-modal="true" aria-labelledby="contactPanelTitle">
   <div class="enquiry-panel-header">
     <div>
-      <div class="enquiry-panel-title">Book a Session</div>
-      <div class="enquiry-panel-subtitle">I'll get back to you within 24 hours</div>
+      <div class="enquiry-panel-title" id="contactPanelTitle">Get in touch</div>
+      <div class="enquiry-panel-subtitle">No form to fill in. Tap what applies, then send it whichever way you like. I reply within 24 hours.</div>
     </div>
-    <button class="enquiry-close" onclick="closeEnquiry()">&#x2715;</button>
+    <button class="enquiry-close" type="button" data-close-contact aria-label="Close">&#x2715;</button>
   </div>
 
-  <form class="enquiry-form" id="enquiryForm" action="https://formspree.io/f/xkoqgwkk" method="POST">
+  <div class="cp-body">
+    <div class="cp-step"><span class="cp-num">1</span> Tap what applies <small>optional</small></div>
 
-    <!-- Name -->
-    <div class="form-group">
-      <label for="fname">Your Name *</label>
-      <input type="text" id="fname" name="name" placeholder="e.g. Sarah Tan" required />
-    </div>
-
-    <!-- Preferred contact -->
-    <div class="form-group">
-      <span class="field-label">Preferred Contact Method *</span>
-      <div class="contact-toggle">
-        <button type="button" class="toggle-btn active" data-target="phone-field" onclick="switchContact(this, 'phone-field', 'email-field')">WhatsApp</button>
-        <button type="button" class="toggle-btn" data-target="email-field" onclick="switchContact(this, 'email-field', 'phone-field')">Email</button>
+    <div role="group" aria-labelledby="cpLevelLabel">
+      <span class="cp-label" id="cpLevelLabel">Level</span>
+      <div class="cp-chips">
+        <button type="button" class="cp-chip" data-pick="level" data-value="Primary" aria-pressed="false">Primary</button>
+        <button type="button" class="cp-chip" data-pick="level" data-value="Sec 1&ndash;2" aria-pressed="false">Sec 1&ndash;2</button>
+        <button type="button" class="cp-chip" data-pick="level" data-value="Sec 3&ndash;4" aria-pressed="false">Sec 3&ndash;4</button>
+        <button type="button" class="cp-chip" data-pick="level" data-value="JC" aria-pressed="false">JC</button>
+        <button type="button" class="cp-chip" data-pick="level" data-value="IB / IP / IGCSE" aria-pressed="false">IB / IP / IGCSE</button>
       </div>
     </div>
-    <div class="form-group" id="phone-field">
-      <label for="fphone">WhatsApp Number *</label>
-      <input type="tel" id="fphone" name="whatsapp" placeholder="+65 9XXX XXXX" required />
-    </div>
-    <div class="form-group" id="email-field" style="display:none;">
-      <label for="femail">Email Address *</label>
-      <input type="email" id="femail" name="email" placeholder="you@example.com" />
-    </div>
 
-    <div class="form-divider"></div>
-
-    <!-- Subject & Level -->
-    <div class="form-group">
-      <span class="field-label">Subject(s) Needed *</span>
-      <div class="checkbox-group">
-        <label class="checkbox-item"><input type="checkbox" name="subject" value="Mathematics" /> Mathematics</label>
-        <label class="checkbox-item"><input type="checkbox" name="subject" value="Science" /> Science</label>
-        <label class="checkbox-item"><input type="checkbox" name="subject" value="Python / H2 Computing" /> Computing</label>
-        <label class="checkbox-item"><input type="checkbox" name="subject" value="Other" /> Other</label>
+    <div role="group" aria-labelledby="cpSubjectLabel">
+      <span class="cp-label" id="cpSubjectLabel">Subject</span>
+      <div class="cp-chips">
+        <button type="button" class="cp-chip" data-pick="subject" data-value="Maths" aria-pressed="false">Maths</button>
+        <button type="button" class="cp-chip" data-pick="subject" data-value="A-Math" aria-pressed="false">A-Math</button>
+        <button type="button" class="cp-chip" data-pick="subject" data-value="Science" aria-pressed="false">Science</button>
+        <button type="button" class="cp-chip" data-pick="subject" data-value="Physics" aria-pressed="false">Physics</button>
+        <button type="button" class="cp-chip" data-pick="subject" data-value="Computing" aria-pressed="false">Computing</button>
       </div>
     </div>
-    <div class="form-group">
-      <label for="flevel">Student Level *</label>
-      <select id="flevel" name="level" required>
-        <option value="" disabled selected>Select level</option>
-        <option>Primary School (P1–P6)</option>
-        <option>Lower Secondary (Sec 1–2)</option>
-        <option>Upper Secondary (Sec 3–4)</option>
-        <option>JC (H1 / H2)</option>
-        <option>IB / IP / IGCSE</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="fstream">Stream / Exam</label>
-      <input type="text" id="fstream" name="stream" placeholder="e.g. Sec 3 G3, A-Math · PSLE 2027 · JC1 H2" />
-    </div>
 
-    <div class="form-divider"></div>
-
-    <!-- Session mode & location -->
-    <div class="form-group">
-      <label for="fmode">Session Mode *</label>
-      <select id="fmode" name="mode" required>
-        <option value="" disabled selected>Select mode</option>
-        <option>In-person</option>
-        <option>Online (Zoom)</option>
-        <option>Either is fine</option>
-      </select>
-    </div>
-    <div class="form-group" id="location-field">
-      <label for="flocation">Your Location / Area</label>
-      <input type="text" id="flocation" name="location" placeholder="e.g. Ang Mo Kio, Tampines..." />
-    </div>
-
-    <div class="form-divider"></div>
-
-    <!-- Availability -->
-    <div class="form-group">
-      <span class="field-label">Preferred Days *</span>
-      <div class="checkbox-group" style="grid-template-columns: repeat(4, 1fr);">
-        <label class="checkbox-item"><input type="checkbox" name="day" value="Mon" /> Mon</label>
-        <label class="checkbox-item"><input type="checkbox" name="day" value="Tue" /> Tue</label>
-        <label class="checkbox-item"><input type="checkbox" name="day" value="Wed" /> Wed</label>
-        <label class="checkbox-item"><input type="checkbox" name="day" value="Thu" /> Thu</label>
-        <label class="checkbox-item"><input type="checkbox" name="day" value="Fri" /> Fri</label>
-        <label class="checkbox-item"><input type="checkbox" name="day" value="Sat" /> Sat</label>
-        <label class="checkbox-item"><input type="checkbox" name="day" value="Sun" /> Sun</label>
+    <div role="group" aria-labelledby="cpModeLabel">
+      <span class="cp-label" id="cpModeLabel">Lessons</span>
+      <div class="cp-chips">
+        <button type="button" class="cp-chip" data-pick="mode" data-value="At home" aria-pressed="false">At home</button>
+        <button type="button" class="cp-chip" data-pick="mode" data-value="Online" aria-pressed="false">Online</button>
+        <button type="button" class="cp-chip" data-pick="mode" data-value="At home or online" aria-pressed="false">Either</button>
       </div>
     </div>
-    <div class="form-group">
-      <label for="ftime">Preferred Time Slot *</label>
-      <select id="ftime" name="time_slot" required>
-        <option value="" disabled selected>Select time</option>
-        <option>Morning (10am – 12pm)</option>
-        <option>Afternoon (12pm – 4pm)</option>
-        <option>Evening (4pm – 7pm)</option>
-        <option>Night (7pm – 10pm)</option>
-        <option>Flexible</option>
-      </select>
+
+    <div class="cp-slot" id="cpSlot" hidden>
+      <span>Slot: <b id="cpSlotText"></b></span>
+      <button type="button" data-clear-slot aria-label="Remove slot">&#x2715;</button>
     </div>
 
-    <div class="form-divider"></div>
-
-    <!-- Notes -->
-    <div class="form-group">
-      <label for="fnotes">Anything else I should know?</label>
-      <textarea id="fnotes" name="notes" placeholder="e.g. upcoming exams, weak topics, special needs..."></textarea>
+    <div class="cp-preview">
+      <span class="cp-label">Your message</span>
+      <p id="cpPreview" aria-live="polite">Hi T-Leng, I'm interested in tuition.</p>
+      <small>You can edit it before sending.</small>
     </div>
 
-    <!-- Formspree helpers: reply-to sender, email subject line -->
-    <input type="hidden" name="_replyto" id="f_replyto" value="" />
-    <input type="hidden" name="_subject" value="New tuition enquiry — T-Leng Tuition" />
+    <div class="cp-rule"></div>
 
-    <button type="submit" class="enquiry-submit">Submit Enquiry →</button>
-  </form>
+    <div class="cp-step"><span class="cp-num">2</span> Send it by</div>
 
-  <div class="enquiry-success" id="enquirySuccess">
-    <div class="enquiry-success-icon" style="color:var(--gold-deep);line-height:0"><svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M7.5 12.5l3 3 6-6.5"/></svg></div>
-    <h3>Enquiry Received!</h3>
-    <p>Thank you for reaching out. I&rsquo;ll be in touch within 24 hours by WhatsApp or email.</p>
+    <div class="cp-channels">
+      <a class="cp-channel is-primary" data-channel="wa" href="https://wa.me/6591866928?text=Hi%20T-Leng%2C%20I%27m%20interested%20in%20tuition.%20Level%3A%20%20Subject%3A%20%20Area%3A%20" target="_blank" rel="noopener">
+        <svg class="ic" width="24" height="24" aria-hidden="true"><use href="#i-wa"/></svg>
+        <span><b>WhatsApp</b><small>Fastest way to reach me</small></span>
+        <span class="go" aria-hidden="true">&rarr;</span>
+      </a>
+      <a class="cp-channel" data-channel="sms" href="sms:+6591866928">
+        <svg class="ic" width="24" height="24" aria-hidden="true"><use href="#i-sms"/></svg>
+        <span><b>Text message (SMS)</b><small>No WhatsApp needed</small></span>
+        <span class="go" aria-hidden="true">&rarr;</span>
+      </a>
+      <a class="cp-channel" data-channel="mail" href="mailto:tlengengtuition@gmail.com?subject=Tuition%20enquiry">
+        <svg class="ic" width="24" height="24" aria-hidden="true"><use href="#i-mail"/></svg>
+        <span><b>Email</b><small>tlengengtuition@gmail.com</small></span>
+        <span class="go" aria-hidden="true">&rarr;</span>
+      </a>
+      <a class="cp-channel" href="tel:+6591866928">
+        <svg class="ic" width="24" height="24" aria-hidden="true"><use href="#i-call"/></svg>
+        <span><b>Call</b><small>+65 9186 6928 &middot; 12pm &ndash; 10pm daily</small></span>
+        <span class="go" aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+
+    <div class="cp-foot">
+      <button type="button" class="cp-copy" data-copy="+65 9186 6928"><svg class="ic" width="16" height="16" aria-hidden="true"><use href="#i-copy"/></svg> <span>Copy +65 9186 6928</span></button>
+      <a href="https://share.google/Mp7RmO8o6dmYv6A1m" target="_blank" rel="noopener">T-Leng Tuition on Google &rarr;</a>
+    </div>
   </div>
 </div>
+
+<script>
+(function () {
+  var PHONE = '6591866928', EMAIL = 'tlengengtuition@gmail.com';
+  var state = { level: '', subject: [], mode: '', slot: '' };
+  var panel = document.getElementById('contactPanel');
+  var overlay = document.getElementById('contactOverlay');
+  var lastFocus = null;
+
+  function message() {
+    var l = ["Hi T-Leng, I'm interested in tuition.", 'Level: ' + state.level, 'Subject: ' + state.subject.join(', ')];
+    if (state.mode) l.push('Lessons: ' + state.mode);
+    if (state.mode !== 'Online') l.push('Area: ');
+    if (state.slot) l.push('Preferred slot: ' + state.slot);
+    return l.join('\n');
+  }
+
+  // Every WhatsApp / SMS / email link on the page carries the current message
+  function refresh() {
+    var m = message(), e = encodeURIComponent(m);
+    var href = {
+      wa: 'https://wa.me/' + PHONE + '?text=' + e,
+      sms: 'sms:+' + PHONE + '?&body=' + e,
+      mail: 'mailto:' + EMAIL + '?subject=Tuition%20enquiry&body=' + encodeURIComponent(m.replace(/\n/g, '\r\n'))
+    };
+    document.querySelectorAll('[data-channel]').forEach(function (a) { a.href = href[a.getAttribute('data-channel')]; });
+    document.getElementById('cpPreview').textContent = m;
+    document.getElementById('cpSlot').hidden = !state.slot;
+    document.getElementById('cpSlotText').textContent = state.slot;
+    panel.querySelectorAll('[data-pick]').forEach(function (b) {
+      var k = b.getAttribute('data-pick'), v = b.getAttribute('data-value');
+      b.setAttribute('aria-pressed', String(k === 'subject' ? state.subject.indexOf(v) > -1 : state[k] === v));
+    });
+  }
+
+  function open() {
+    lastFocus = document.activeElement;
+    panel.classList.add('open'); overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    panel.scrollTop = 0;
+    panel.querySelector('.enquiry-close').focus();
+  }
+  function close() {
+    panel.classList.remove('open'); overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  document.addEventListener('click', function (ev) {
+    var t = ev.target.closest('[data-open-contact],[data-close-contact],[data-pick],[data-slot],[data-clear-slot],[data-copy]');
+    if (!t) return;
+    if (t.hasAttribute('data-open-contact')) { ev.preventDefault(); open(); }
+    else if (t.hasAttribute('data-close-contact')) { close(); }
+    else if (t.hasAttribute('data-slot')) { state.slot = t.getAttribute('data-slot'); refresh(); open(); }
+    else if (t.hasAttribute('data-clear-slot')) { state.slot = ''; refresh(); }
+    else if (t.hasAttribute('data-copy')) {
+      var label = t.querySelector('span'), was = label.textContent;
+      navigator.clipboard.writeText(t.getAttribute('data-copy')).then(function () {
+        label.textContent = 'Copied';
+        setTimeout(function () { label.textContent = was; }, 1800);
+      }).catch(function () {});
+    } else {
+      var k = t.getAttribute('data-pick'), v = t.getAttribute('data-value');
+      if (k === 'subject') {
+        var i = state.subject.indexOf(v);
+        if (i > -1) state.subject.splice(i, 1); else state.subject.push(v);
+      } else {
+        state[k] = state[k] === v ? '' : v;
+      }
+      refresh();
+    }
+  });
+
+  document.addEventListener('keydown', function (ev) {
+    if (!panel.classList.contains('open')) return;
+    if (ev.key === 'Escape') { close(); return; }
+    if (ev.key !== 'Tab') return;
+    var f = Array.prototype.filter.call(panel.querySelectorAll('a[href],button'), function (el) { return el.offsetParent !== null; });
+    var first = f[0], last = f[f.length - 1];
+    if (ev.shiftKey && document.activeElement === first) { ev.preventDefault(); last.focus(); }
+    else if (!ev.shiftKey && document.activeElement === last) { ev.preventDefault(); first.focus(); }
+  });
+
+  if (!navigator.clipboard) panel.querySelector('[data-copy]').hidden = true;
+  refresh();
+})();
+</script>
 
 <!-- Live timetable: fetches from Supabase public_schedule() function -->
 <script>
@@ -1745,7 +1773,6 @@ document.addEventListener('DOMContentLoaded', function() {
   var SUPA_URL = 'https://rnjvswkejbrhbaytutai.supabase.co';
   var SUPA_KEY = 'sb_publishable_IKUtlGhnwJT0Hld5A8cglw_0iF6Y5J9';
   var GRID_START = 10; var PX_PER_HR = 64;
-  var WA = 'https://wa.me/6591866928?text=Hi%20T-Leng%2C%20I%27m%20interested%20in%20tuition.%20Level%3A%20%20Subject%3A%20%20Area%3A%20';
   function toMins(t) { var p=(t||'0:0').split(':'); return (+p[0]||0)*60+(+p[1]||0); }
   function fmt12(t) { var p=(t||'0:00').split(':'),h=+p[0],m=p[1]||'00'; return (h%12||12)+':'+m+(h<12?'AM':'PM'); }
   function pos(s,e) { var gm=GRID_START*60; return {top:Math.max(0,(toMins(s)-gm)/60*PX_PER_HR),height:Math.max(20,(toMins(e)-toMins(s))/60*PX_PER_HR)}; }
@@ -1762,8 +1789,9 @@ document.addEventListener('DOMContentLoaded', function() {
   function renderOpen(byDay){
     var html=byDay.map(function(day,i){
       var f=freeList(day);
-      return '<div class="slot-day'+(f.length?'':' full')+'"><b>'+DAYS[i]+'</b><span>'+
-        (f.length?f.map(function(x){return hm(x[0])+' &ndash; '+hm(x[1]);}).join('<br>'):'Fully booked')+'</span></div>';
+      return '<div class="slot-day'+(f.length?'':' full')+'"><b>'+DAYS[i]+'</b><span'+(f.length?' class="slot-list"':'')+'>'+
+        (f.length?f.map(function(x){var t=hm(x[0])+' \u2013 '+hm(x[1]);
+          return '<button type="button" class="slot-pick" data-slot="'+DAYS[i]+', '+t+'">'+t+'</button>';}).join(''):'Fully booked')+'</span></div>';
     }).join('');
     document.getElementById('slot-days').innerHTML=html;
     document.getElementById('open-slots').hidden=false;
@@ -1781,7 +1809,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   function fail(){
     var st=document.getElementById('tt-status');
-    st.innerHTML='Live availability couldn&rsquo;t load just now. <a href="'+WA+'" target="_blank" rel="noopener">WhatsApp me</a> and I&rsquo;ll tell you which slots are open.';
+    st.innerHTML='Live availability couldn&rsquo;t load just now. <a href="#contact" data-open-contact>Message me</a> and I&rsquo;ll tell you which slots are open.';
     var w=document.querySelector('.timetable-wrap'),l=document.querySelector('#timetable .legend');
     if(w)w.style.display='none'; if(l)l.style.display='none';
   }
