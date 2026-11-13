@@ -789,11 +789,10 @@
       line-height: 1.7;
     }
     .contact-grid {
-      display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
-      max-width: 68rem; margin: 0 auto 2.5rem;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+      max-width: 54rem; margin: 0 auto 2.5rem;
     }
     .contact-card {
-      flex: 1 1 11.5rem;
       display: block; text-decoration: none; color: inherit;
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.1);
@@ -806,7 +805,6 @@
       transform: translateY(-2px);
     }
     .contact-card.is-primary { border-color: var(--gold); background: rgba(201,168,76,0.1); }
-    .contact-card.email { flex-basis: 16rem; }
     .contact-card-icon { color: var(--gold); margin-bottom: 0.8rem; line-height: 0; }
     .contact-card-label {
       font-size: 0.65rem; font-weight: 500;
@@ -896,6 +894,8 @@
     .practice-card { padding: 1.8rem 1.6rem; }
     .practice-card .qual-card-value { font-size: 1.25rem; }
     .practice-card .go { display: inline-block; margin-top: 0.8rem; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-text); }
+    .mc-telegram { margin-top: 1.2rem; font-size: 0.88rem; color: var(--muted); }
+    .mc-telegram a { color: var(--gold-text); font-weight: 500; }
     .hero-mc { margin-top: 1.4rem; font-size: 0.9rem; color: var(--muted); }
     .hero-mc a { color: var(--gold-text); font-weight: 500; text-decoration: none; border-bottom: 1px solid var(--gold-lt); }
     .subject-link { display: inline-block; margin-top: 0.9rem; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(201,168,76,0.4); }
@@ -971,6 +971,7 @@
     .stat-num { font-size: 1.6rem; }
     .stat-bubble.left { left: -14px; bottom: 56px; }
     .stat-bubble.right { right: -14px; top: auto; bottom: -20px; }
+    .contact-grid { grid-template-columns: 1fr 1fr; max-width: 38rem; }
   }
   /* ── PHONES ── (desktop layout unchanged) */
   @media (max-width: 760px) {
@@ -999,7 +1000,7 @@
     section { padding: 3.5rem 1.2rem; }
     #about, #rates { grid-template-columns: 1fr; gap: 2.5rem; }
     .subjects-grid, .testimonials-grid { grid-template-columns: 1fr !important; }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+    .contact-grid { gap: 0.7rem; }
     .contact-card { padding: 1.3rem 0.9rem; }
     .contact-card.wide { grid-column: 1 / -1; }
     .stat-bubble { padding: 0.6rem 0.9rem; z-index: 5; }
@@ -1220,6 +1221,7 @@
     </a>
   </div>
   <a href="https://www.mugcornersg.com/?ref=tuition" class="btn-gold">Visit MugCorner &rarr;</a>
+  <p class="mc-telegram">MugCorner on Telegram: <a href="https://t.me/mugcornersg" target="_blank" rel="noopener">@mugcornersg</a> &middot; <a href="https://t.me/mugcornersg_chat" target="_blank" rel="noopener">@mugcornersg_chat</a></p>
 </section>
 
 <!-- TIMETABLE -->
@@ -1231,7 +1233,7 @@
   <div id="tt-status" class="tt-status">Loading this week&rsquo;s availability&hellip;</div>
   <div class="open-slots" id="open-slots" hidden>
     <h3>Open slots</h3>
-    <p class="slot-hint">Tap a time to ask about it by WhatsApp, text, email or a call.</p>
+    <p class="slot-hint">Tap a time to ask about it by WhatsApp, Telegram, text, email or a call.</p>
     <div class="slot-days" id="slot-days"></div>
   </div>
   <div class="timetable-wrap">
@@ -1345,7 +1347,7 @@
       <p>Tell me your area and your child&rsquo;s level. No form to fill in.</p>
       <div class="quote-actions">
         <a class="btn-primary btn-wa" data-channel="wa" href="https://wa.me/6591866928?text=Hi%20T-Leng%2C%20I%27m%20interested%20in%20tuition.%20Level%3A%20%20Subject%3A%20%20Area%3A%20" target="_blank" rel="noopener"><svg class="ic" width="18" height="18" aria-hidden="true"><use href="#i-wa"/></svg> WhatsApp</a>
-        <a class="btn-outline" href="#contact" data-open-contact>Call, text or email</a>
+        <a class="btn-outline" href="#contact" data-open-contact>Other ways</a>
       </div>
     </div>
   </div>
@@ -1488,17 +1490,17 @@
       <div class="contact-card-value">+65 9186 6928</div>
       <div class="contact-card-hint">No WhatsApp needed</div>
     </a>
-    <a class="contact-card email wide" data-channel="mail" href="mailto:tlengengtuition@gmail.com?subject=Tuition%20enquiry">
-      <div class="contact-card-icon"><svg class="ic" width="26" height="26" aria-hidden="true"><use href="#i-mail"/></svg></div>
-      <div class="contact-card-label">Email</div>
-      <div class="contact-card-value">tlengengtuition@gmail.com</div>
-      <div class="contact-card-hint">Good for longer questions</div>
-    </a>
-    <a class="contact-card wide" href="https://share.google/Mp7RmO8o6dmYv6A1m" target="_blank" rel="noopener">
+    <a class="contact-card" href="https://share.google/Mp7RmO8o6dmYv6A1m" target="_blank" rel="noopener">
       <div class="contact-card-icon"><svg class="ic" width="26" height="26" aria-hidden="true"><use href="#i-pin"/></svg></div>
       <div class="contact-card-label">Google</div>
       <div class="contact-card-value">T-Leng Tuition</div>
       <div class="contact-card-hint">Profile &amp; reviews</div>
+    </a>
+    <a class="contact-card wide" data-channel="mail" href="mailto:tlengengtuition@gmail.com?subject=Tuition%20enquiry">
+      <div class="contact-card-icon"><svg class="ic" width="26" height="26" aria-hidden="true"><use href="#i-mail"/></svg></div>
+      <div class="contact-card-label">Email</div>
+      <div class="contact-card-value">tlengengtuition@gmail.com</div>
+      <div class="contact-card-hint">Good for longer questions</div>
     </a>
   </div>
   <a href="#contact" data-open-contact class="btn-primary" style="display:inline-block;background:var(--gold);color:var(--ink);">Quick enquiry &middot; 3 taps, no typing</a>
@@ -1719,9 +1721,8 @@
 <script>
 (function () {
   var PHONE = '6591866928', EMAIL = 'tlengengtuition@gmail.com';
-  // TELEGRAM PLACEHOLDER: put the Telegram username here, without the @ (e.g. 'someusername').
-  // While it is empty, the Telegram options stay hidden everywhere on the page.
-  var TELEGRAM = '';
+  // Telegram username, without the @. If it is emptied, the Telegram options hide everywhere on the page.
+  var TELEGRAM = 'tlengtuition';
   var state = { level: '', subject: [], mode: '', slot: '' };
   var panel = document.getElementById('contactPanel');
   var overlay = document.getElementById('contactOverlay');
